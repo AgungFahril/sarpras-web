@@ -1,819 +1,858 @@
 @extends('layouts.app')
 
-@section('title', 'Bidang Sarana dan Prasarana')
+@section('title', 'Dashboard Sarpras')
 
 @section('content')
 
+@vite(['resources/css/dashboard.css'])
 
-<!-- =====================================================
-     HERO
-====================================================== -->
+<div class="sarpras-dashboard">
 
-<section class="hero">
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
 
-    <div class="hero-background">
+        <div class="sidebar-logo">
 
-        <div class="hero-pattern"></div>
-
-    </div>
-
-
-    <div class="container hero-container">
-
-        <!-- LEFT -->
-
-        <div class="hero-content">
-
-            <div class="eyebrow">
-
-                <span class="eyebrow-line"></span>
-
-                BIDANG SARANA DAN PRASARANA
-
+            <div class="logo-circle">
+                <img
+                    src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}"
+                    alt="Logo Bakorwil III">
             </div>
 
-
-            <h1>
-
-                Membangun Sarana,
-                <span>Mendukung Pelayanan.</span>
-
-            </h1>
-
-
-            <p>
-
-                Mengenal lebih dekat Bidang Sarana dan Prasarana,
-                berbagai kegiatan, informasi, serta peran penting
-                dalam mendukung pelayanan dan kebutuhan organisasi.
-
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a href="#tentang"
-                   class="button button-primary">
-
-                    Tentang Sarpras
-
-                    <i class="bi bi-arrow-right"></i>
-
-                </a>
-
-
-                <a href="#infografis"
-                   class="button button-outline">
-
-                    <i class="bi bi-grid-3x3-gap"></i>
-
-                    Lihat Infografis
-
-                </a>
-
-            </div>
-
-
-            <!-- HERO STATS -->
-
-            <div class="hero-stats">
-
-                <div class="hero-stat">
-
-                    <strong>01</strong>
-
-                    <span>
-                        Pengelolaan
-                        Sarana
-                    </span>
-
-                </div>
-
-
-                <div class="hero-stat">
-
-                    <strong>02</strong>
-
-                    <span>
-                        Pengelolaan
-                        Prasarana
-                    </span>
-
-                </div>
-
-
-                <div class="hero-stat">
-
-                    <strong>03</strong>
-
-                    <span>
-                        Pemeliharaan
-                        Fasilitas
-                    </span>
-
-                </div>
-
+            <div>
+                <strong>BAKORWIL III</strong>
+                <span>MALANG</span>
             </div>
 
         </div>
 
 
-        <!-- RIGHT -->
+        <nav class="sidebar-menu">
 
-        <div class="hero-visual">
+            <a href="#" class="active">
+                🏠
+                <span>Dashboard</span>
+            </a>
 
-            <div class="hero-image">
+            <a href="#">
+                🛣️
+                <span>Jalan & Jembatan</span>
+            </a>
 
-                <div class="image-overlay"></div>
+            <a href="#">
+                🌿
+                <span>Lingkungan Hidup</span>
+            </a>
 
-                <div class="hero-image-content">
+            <a href="#">
+                🌳
+                <span>Kehutanan</span>
+            </a>
 
-                    <span>
-                        SARANA & PRASARANA
-                    </span>
+            <a href="#">
+                ⚡
+                <span>ESDM</span>
+            </a>
 
-                    <strong>
-                        Mendukung
-                        <br>
-                        Pelayanan Berkualitas
-                    </strong>
+            <a href="#">
+                💧
+                <span>Sumber Daya Air</span>
+            </a>
 
-                </div>
+            <a href="#">
+                🚌
+                <span>Transportasi</span>
+            </a>
 
-                <div class="hero-image-icon">
+            <a href="#">
+                📋
+                <span>Program / Kegiatan</span>
+            </a>
 
-                    <i class="bi bi-buildings"></i>
+            <a href="#">
+                🔍
+                <span>Monitoring & Evaluasi</span>
+            </a>
 
-                </div>
+            <a href="#">
+                ⚠️
+                <span>Permasalahan Wilayah</span>
+            </a>
+
+            <a href="{{ route('peta.wilayah') }}">
+                📍
+                <span>Peta Wilayah</span>
+            </a>
+
+            <a href="#">
+                📁
+                <span>Data & Dokumen</span>
+            </a>
+
+            <a href="#">
+                👥
+                <span>Koordinasi OPD</span>
+            </a>
+
+            <a href="#">
+                ✅
+                <span>Tindak Lanjut</span>
+            </a>
+
+            <a href="#">
+                📊
+                <span>Laporan</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================
+         KONTEN UTAMA
+    ========================== -->
+    <main class="dashboard-main">
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+        <header class="dashboard-header">
+
+            <div class="header-text">
+
+                <h1>
+                    SUB BIDANG SARANA DAN PRASARANA I
+                </h1>
+
+                <h2>
+                    BAKORWIL III MALANG
+                </h2>
+
+                <p>
+                    Koordinasi, Fasilitasi, Pemantauan dan Evaluasi
+                    Pembangunan Sarana Prasarana di Wilayah Kerja
+                </p>
 
             </div>
 
 
-            <!-- FLOATING CARD -->
+            <div class="header-illustration">
 
-            <div class="hero-card">
+                <img
+                    src="{{ asset('images/pemandangan.png') }}"
+                    alt="Ilustrasi Malang">
 
-                <div class="hero-card-icon">
+            </div>
 
-                    <i class="bi bi-check2-circle"></i>
+        </header>
 
-                </div>
+
+        <!-- =========================
+             STATISTIK
+        ========================== -->
+        <section class="statistic-grid">
+
+            <div class="stat-card blue">
+
+                <div class="stat-icon">📋</div>
 
                 <div>
-
-                    <strong>
-                        Informasi Sarpras
-                    </strong>
-
-                    <span>
-                        Terintegrasi & Informatif
-                    </span>
-
+                    <span>PROGRAM / KEGIATAN</span>
+                    <strong>128</strong>
+                    <small>Kegiatan Dipantau</small>
                 </div>
 
             </div>
 
 
-            <div class="hero-number">
+            <div class="stat-card green">
 
-                <span>INFO</span>
+                <div class="stat-icon">📈</div>
 
-                <strong>01</strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     INTRO
-====================================================== -->
-
-<section class="intro-section">
-
-    <div class="container">
-
-        <div class="intro-grid">
-
-            <div>
-
-                <span class="section-label">
-                    TENTANG KAMI
-                </span>
-
-                <h2>
-                    Sarana yang baik,
-                    <br>
-                    pelayanan yang optimal.
-                </h2>
-
-            </div>
-
-
-            <div>
-
-                <p class="intro-text">
-
-                    Bidang Sarana dan Prasarana merupakan bagian
-                    yang berperan dalam mendukung tersedianya
-                    sarana dan prasarana yang menunjang pelaksanaan
-                    kegiatan serta pelayanan organisasi.
-
-                </p>
-
-                <a href="#tentang"
-                   class="text-link">
-
-                    Selengkapnya
-
-                    <i class="bi bi-arrow-right"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT
-====================================================== -->
-
-<section class="about-section"
-         id="tentang">
-
-    <div class="container">
-
-        <div class="about-grid">
-
-            <!-- VISUAL -->
-
-            <div class="about-visual">
-
-                <div class="about-main-image">
-
-                    <div>
-
-                        <i class="bi bi-building"></i>
-
-                        <span>
-                            Visual Bidang Sarpras
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="about-experience">
-
-                    <strong>
-                        SARPRAS
-                    </strong>
-
-                    <span>
-                        Sarana & Prasarana
-                    </span>
-
+                <div>
+                    <span>PROGRES PELAKSANAAN</span>
+                    <strong>68%</strong>
+                    <small>Rata-rata Progres</small>
                 </div>
 
             </div>
 
 
-            <!-- CONTENT -->
+            <div class="stat-card orange">
 
-            <div class="about-content">
+                <div class="stat-icon">⚠️</div>
 
-                <span class="section-label">
-                    MENGENAL SARPRAS
-                </span>
-
-                <h2>
-                    Mendukung kebutuhan
-                    sarana dan prasarana
-                    secara optimal.
-                </h2>
-
-                <p>
-
-                    Bidang Sarana dan Prasarana memiliki peran
-                    dalam mendukung tersedianya fasilitas yang
-                    memadai untuk menunjang kegiatan dan
-                    pelayanan.
-
-                </p>
-
-                <p>
-
-                    Melalui pengelolaan, pemeliharaan, serta
-                    dukungan terhadap kebutuhan fasilitas,
-                    Sarpras berupaya menciptakan lingkungan
-                    kerja yang tertata dan mendukung produktivitas.
-
-                </p>
-
-
-                <div class="feature-list">
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-box-seam"></i>
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Pengelolaan Sarana
-                            </strong>
-
-                            <span>
-                                Pengelolaan berbagai sarana
-                                pendukung kegiatan.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-buildings"></i>
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Pengelolaan Prasarana
-                            </strong>
-
-                            <span>
-                                Mendukung ketersediaan
-                                prasarana yang memadai.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-tools"></i>
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Pemeliharaan
-                            </strong>
-
-                            <span>
-                                Menjaga fasilitas agar tetap
-                                berfungsi dengan baik.
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-headset"></i>
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Dukungan Pelayanan
-                            </strong>
-
-                            <span>
-                                Mendukung kebutuhan pelayanan
-                                organisasi.
-                            </span>
-
-                        </div>
-
-                    </div>
-
+                <div>
+                    <span>PERMASALAHAN</span>
+                    <strong>36</strong>
+                    <small>Perlu Koordinasi</small>
                 </div>
 
             </div>
 
-        </div>
 
-    </div>
+            <div class="stat-card purple">
 
-</section>
+                <div class="stat-icon">📑</div>
 
-
-
-<!-- =====================================================
-     TEAM
-====================================================== -->
-
-<section class="team-section"
-         id="tim">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="section-label">
-                    TIM KAMI
-                </span>
-
-                <h2>
-                    Orang-orang di balik
-                    Bidang Sarpras.
-                </h2>
+                <div>
+                    <span>MONEV</span>
+                    <strong>96</strong>
+                    <small>Kegiatan Dimonitor</small>
+                </div>
 
             </div>
 
+
+            <div class="stat-card teal">
+
+                <div class="stat-icon">✓</div>
+
+                <div>
+                    <span>TINDAK LANJUT</span>
+                    <strong>54</strong>
+                    <small>Rekomendasi</small>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card navy">
+
+                <div class="stat-icon">🗺️</div>
+
+                <div>
+                    <span>WILAYAH</span>
+                    <strong>7</strong>
+                    <small>Kab / Kota</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             BAGIAN ATAS
+             KIRI  = FUNGSI UTAMA
+             KANAN = PETA + INFORMASI TERKINI
+        ====================================================== -->
+        <section class="dashboard-top-grid">
+
+
+            <!-- =========================
+                 KIRI
+            ========================== -->
+            <div class="function-area">
+
+                <div class="section-title">
+
+                    <span></span>
+
+                    <h2>FUNGSI UTAMA</h2>
+
+                    <span></span>
+
+                </div>
+
+
+                 <div class="function-grid">
+
+        <!-- KOORDINASI -->
+        <div class="function-card blue-card">
+
+            <div class="function-image">
+                👨‍💼
+            </div>
+
+            <h3>KOORDINASI</h3>
 
             <p>
-
-                Kenali tim yang menjalankan tugas dan
-                mendukung kegiatan Bidang Sarana dan Prasarana.
-
+                Mengkoordinasikan perencanaan,
+                pelaksanaan dan penyelesaian
+                permasalahan sarana prasarana
+                dengan OPD dan instansi terkait
+                di wilayah kerja.
             </p>
 
         </div>
 
 
-        <div class="team-grid">
+        <!-- FASILITASI -->
+        <div class="function-card green-card">
 
-            @for ($i = 1; $i <= 4; $i++)
-
-                <div class="team-card">
-
-                    <div class="team-photo">
-
-                        <i class="bi bi-person"></i>
-
-                    </div>
-
-                    <div class="team-info">
-
-                        <span>
-                            BIDANG SARPRAS
-                        </span>
-
-                        <h3>
-                            Nama Anggota
-                        </h3>
-
-                        <p>
-                            Jabatan / Posisi
-                        </p>
-
-                    </div>
-
-                </div>
-
-            @endfor
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     INFOGRAPHICS
-====================================================== -->
-
-<section class="infographic-section"
-         id="infografis">
-
-    <div class="container">
-
-        <div class="section-heading light">
-
-            <div>
-
-                <span class="section-label">
-                    INFORMASI VISUAL
-                </span>
-
-                <h2>
-                    Infografis Sarpras.
-                </h2>
-
+            <div class="function-image">
+                📊
             </div>
 
+            <h3>FASILITASI</h3>
+
             <p>
-
-                Berbagai informasi dan materi visual
-                yang telah dibuat oleh Bidang Sarpras.
-
+                Memfasilitasi program/kegiatan
+                pembangunan sarana prasarana
+                agar berjalan efektif, tepat sasaran
+                dan sesuai kebutuhan wilayah.
             </p>
 
         </div>
 
 
-        <div class="infographic-grid">
+        <!-- PEMANTAUAN -->
+        <div class="function-card orange-card">
 
-            @for ($i = 1; $i <= 3; $i++)
+            <div class="function-image">
+                👷
+            </div>
 
-                <div class="infographic-card">
+            <h3>PEMANTAUAN</h3>
 
-                    <div class="infographic-image">
+            <p>
+                Melakukan monitoring lapangan
+                terhadap progres fisik, keuangan
+                dan kendala pelaksanaan pembangunan
+                sarana prasarana.
+            </p>
 
-                        <span>
-                            INFOGRAFIS
-                        </span>
+        </div>
 
-                        <i class="bi bi-bar-chart-line"></i>
 
-                    </div>
+        <!-- EVALUASI -->
+        <div class="function-card purple-card">
 
-                    <div class="infographic-info">
+            <div class="function-image">
+                📈
+            </div>
 
-                        <span>
-                            INFORMASI SARPRAS
-                        </span>
+            <h3>EVALUASI</h3>
 
-                        <h3>
-                            Infografis Sarana
-                            dan Prasarana
-                        </h3>
-
-                        <a href="#">
-                            Lihat Infografis
-                            <i class="bi bi-arrow-up-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            @endfor
+            <p>
+                Mengevaluasi hasil pelaksanaan
+                program/kegiatan sebagai dasar
+                rekomendasi perbaikan dan
+                pengambilan keputusan.
+            </p>
 
         </div>
 
     </div>
 
-</section>
 
+    <!-- =====================================================
+         RUANG LINGKUP
+         DIPINDAHKAN KE AREA KOSONG SEBELAH KIRI
+    ====================================================== -->
 
+    <section class="scope-section">
 
-<!-- =====================================================
-     DOCUMENTATION
-====================================================== -->
+        <div class="section-title">
 
-<section class="documentation-section"
-         id="dokumentasi">
+            <span></span>
 
-    <div class="container">
+            <h2>RUANG LINGKUP SARANA PRASARANA</h2>
 
-        <div class="section-heading">
-
-            <div>
-
-                <span class="section-label">
-                    DOKUMENTASI
-                </span>
-
-                <h2>
-                    Kegiatan Bidang Sarpras.
-                </h2>
-
-            </div>
-
-            <a href="#"
-               class="button button-outline dark-button">
-
-                Lihat Semua
-
-                <i class="bi bi-arrow-right"></i>
-
-            </a>
+            <span></span>
 
         </div>
 
 
-        <div class="documentation-grid">
+        <div class="scope-grid">
 
-            <div class="documentation-large">
-
-                <div class="documentation-placeholder">
-
-                    <i class="bi bi-camera"></i>
-
-                    <span>
-                        Foto Kegiatan
-                    </span>
-
-                </div>
-
+            <div class="scope-item">
+                <div>🛣️</div>
+                <span>Jalan &<br>Jembatan</span>
             </div>
 
 
-            <div>
-
-                <div class="documentation-small">
-
-                    <i class="bi bi-image"></i>
-
-                </div>
-
-                <div class="documentation-small">
-
-                    <i class="bi bi-image"></i>
-
-                </div>
-
+            <div class="scope-item">
+                <div>🌿</div>
+                <span>Lingkungan<br>Hidup</span>
             </div>
 
 
-            <div>
-
-                <div class="documentation-small">
-
-                    <i class="bi bi-image"></i>
-
-                </div>
-
-                <div class="documentation-small">
-
-                    <i class="bi bi-image"></i>
-
-                </div>
-
+            <div class="scope-item">
+                <div>🌳</div>
+                <span>Kehutanan</span>
             </div>
 
+
+            <div class="scope-item">
+                <div>⚡</div>
+                <span>ESDM</span>
+            </div>
+
+
+            <div class="scope-item">
+                <div>💧</div>
+                <span>Sumber Daya<br>Air</span>
+            </div>
+
+
+            <div class="scope-item">
+                <div>🚌</div>
+                <span>Transportasi</span>
+            </div>
+
+
+            <div class="scope-item">
+                <div>🏢</div>
+                <span>Prasarana<br>Lainnya</span>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+            <!-- =========================
+                 KANAN
+            ========================== -->
+            <div class="right-column">
+
+
+          <!-- =====================
+     PETA WILAYAH KERJA
+====================== -->
+<div class="map-section">
+
+    <!-- JUDUL -->
+    <div class="map-header">
+        <h2>PETA WILAYAH KERJA</h2>
+    </div>
+
+
+    <!-- =====================
+         PETA SVG
+    ====================== -->
+    <div class="map-container">
+
+        <svg
+            class="wilayah-map"
+            viewBox="0 0 700 500"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+
+            <!-- LAUT JAWA -->
+            <text
+                x="555"
+                y="75"
+                class="sea-text"
+            >
+                LAUT JAWA
+            </text>
+
+
+            <!-- =====================
+                 TUBAN
+            ====================== -->
+            <path
+                class="wilayah tuban"
+                d="M120 90
+                   L170 55
+                   L240 48
+                   L285 65
+                   L330 55
+                   L370 80
+                   L390 125
+                   L355 155
+                   L310 160
+                   L270 145
+                   L220 160
+                   L175 145
+                   L135 155
+                   L110 125 Z"
+            />
+
+            <text
+                x="245"
+                y="110"
+                class="wilayah-label"
+            >
+                TUBAN
+            </text>
+
+
+            <!-- =====================
+                 LAMONGAN
+            ====================== -->
+            <path
+                class="wilayah lamongan"
+                d="M390 80
+                   L445 70
+                   L500 90
+                   L535 120
+                   L520 165
+                   L485 190
+                   L430 175
+                   L395 150
+                   L355 155
+                   L390 125 Z"
+            />
+
+            <text
+                x="445"
+                y="130"
+                class="wilayah-label"
+            >
+                LAMONGAN
+            </text>
+
+
+            <!-- =====================
+                 GRESIK
+            ====================== -->
+            <path
+                class="wilayah gresik"
+                d="M535 120
+                   L590 110
+                   L635 135
+                   L650 175
+                   L625 220
+                   L585 230
+                   L545 210
+                   L520 165 Z"
+            />
+
+            <text
+                x="585"
+                y="175"
+                class="wilayah-label"
+            >
+                GRESIK
+            </text>
+
+
+            <!-- =====================
+                 BANGKALAN
+            ====================== -->
+            <path
+                class="wilayah bangkalan"
+                d="M100 160
+                   L135 155
+                   L175 145
+                   L220 160
+                   L205 200
+                   L175 225
+                   L145 250
+                   L115 235
+                   L95 205
+                   L80 180 Z"
+            />
+
+            <text
+                x="145"
+                y="200"
+                class="wilayah-label"
+            >
+                BANGKALAN
+            </text>
+
+
+            <!-- =====================
+                 MALANG
+            ====================== -->
+            <path
+                class="wilayah malang"
+                d="M260 180
+                   L310 160
+                   L355 155
+                   L395 180
+                   L430 210
+                   L420 255
+                   L390 290
+                   L345 300
+                   L300 285
+                   L260 300
+                   L225 270
+                   L210 230 Z"
+            />
+
+            <text
+                x="320"
+                y="235"
+                class="wilayah-label"
+            >
+                MALANG
+            </text>
+
+
+            <!-- =====================
+                 PASURUAN
+            ====================== -->
+            <path
+                class="wilayah pasuruan"
+                d="M430 210
+                   L485 190
+                   L545 210
+                   L575 235
+                   L560 280
+                   L530 315
+                   L480 325
+                   L440 305
+                   L420 255 Z"
+            />
+
+            <text
+                x="500"
+                y="260"
+                class="wilayah-label"
+            >
+                PASURUAN
+            </text>
+
+
+            <!-- =====================
+                 KOTA MALANG
+            ====================== -->
+            <path
+                class="wilayah kota-malang"
+                d="M300 285
+                   L345 300
+                   L390 290
+                   L405 325
+                   L385 360
+                   L350 375
+                   L315 355
+                   L285 330 Z"
+            />
+
+            <text
+                x="345"
+                y="330"
+                text-anchor="middle"
+                class="wilayah-label small"
+            >
+                KOTA
+            </text>
+
+            <text
+                x="345"
+                y="348"
+                text-anchor="middle"
+                class="wilayah-label small"
+            >
+                MALANG
+            </text>
+
+
+            <!-- =====================
+                 KOMPAS
+            ====================== -->
+            <circle
+                cx="625"
+                cy="395"
+                r="32"
+                class="compass-circle"
+            />
+
+            <text
+                x="625"
+                y="355"
+                text-anchor="middle"
+                class="compass-text"
+            >
+                N
+            </text>
+
+            <path
+                d="M625 365
+                   L638 400
+                   L625 390
+                   L612 400 Z"
+                class="compass-arrow"
+            />
+
+        </svg>
+
+    </div>
+
+
+  <!-- =========================
+     FOTO 7 WILAYAH
+========================== --> 
+{{-- =========================
+     FOTO WILAYAH
+========================= --}}
+<div class="wilayah-carousel">
+
+    <div class="wilayah-track">
+
+        {{-- SET 1 --}}
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kota-Malang.png') }}" alt="Kota Malang">
+            <span>KOTA MALANG</span>
+        </div>
+
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}" alt="Kota Pasuruan">
+            <span>KOTA PASURUAN</span>
+        </div>
+
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}" alt="Kabupaten Malang">
+            <span>KAB. MALANG</span>
+        </div>
+
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}" alt="Kabupaten Pasuruan">
+            <span>KAB. PASURUAN</span>
+        </div>
+
+
+        {{-- SET 2 / DUPLIKASI UNTUK ANIMASI --}}
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kota-Malang.png') }}" alt="Kota Malang">
+            <span>KOTA MALANG</span>
+        </div>
+
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}" alt="Kota Pasuruan">
+            <span>KOTA PASURUAN</span>
+        </div>
+
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}" alt="Kabupaten Malang">
+            <span>KAB. MALANG</span>
+        </div>
+
+        <div class="wilayah-photo">
+            <img src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}" alt="Kabupaten Pasuruan">
+            <span>KAB. PASURUAN</span>
         </div>
 
     </div>
 
-</section>
+</div>
 
+    {{-- =========================
+     TOTAL WILAYAH
+    ========================== --}}
+<div class="map-total">
 
+    <span>📍</span>
 
-<!-- =====================================================
-     CTA
-====================================================== -->
+    <strong>
+        7 KABUPATEN / KOTA
+    </strong>
 
-<section class="cta-section">
+</div>
 
-    <div class="container">
+                <!-- =====================
+                     INFORMASI TERKINI
+                ====================== -->
+                <div class="latest-section">
 
-        <div class="cta">
-
-            <div>
-
-                <span>
-                    BIDANG SARANA DAN PRASARANA
-                </span>
-
-                <h2>
-                    Bersama mendukung
-                    pelayanan yang lebih baik.
-                </h2>
-
-            </div>
-
-
-            <a href="#tentang"
-               class="button button-white">
-
-                Kenali Sarpras
-
-                <i class="bi bi-arrow-up-right"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-====================================================== -->
-
-<footer class="footer"
-        id="kontak">
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-            <div>
-
-                <div class="brand footer-brand">
-
-                    <div class="brand-mark">
-                        <i class="bi bi-buildings-fill"></i>
+                    <div class="latest-header">
+                        <h2>INFORMASI TERKINI</h2>
                     </div>
 
-                    <div class="brand-info">
 
-                        <strong>SARPRAS</strong>
+                    <div class="latest-item">
 
-                        <span>
-                            Sarana & Prasarana
-                        </span>
+                        <span>📋</span>
+
+                        <div>
+
+                            <strong>
+                                Monev Jl. Provinsi Malang
+                            </strong>
+
+                            <small>
+                                24 Mei 2025
+                            </small>
+
+                        </div>
+
+                        <b>›</b>
 
                     </div>
 
+
+                    <div class="latest-item">
+
+                        <span>🌊</span>
+
+                        <div>
+
+                            <strong>
+                                Koordinasi Penanganan Banjir
+                            </strong>
+
+                            <small>
+                                Kab. Pasuruan · 20 Mei 2025
+                            </small>
+
+                        </div>
+
+                        <b>›</b>
+
+                    </div>
+
+
+                    <div class="latest-item">
+
+                        <span>🏢</span>
+
+                        <div>
+
+                            <strong>
+                                Evaluasi Program Drainase
+                            </strong>
+
+                            <small>
+                                Kota Malang · 18 Mei 2025
+                            </small>
+
+                        </div>
+
+                        <b>›</b>
+
+                    </div>
+
+
+                    <a href="#" class="see-all">
+                        Lihat Semua →
+                    </a>
+
                 </div>
 
+            </div>
 
-                <p class="footer-description">
+        </section>
 
-                    Portal informasi Bidang Sarana dan Prasarana
-                    untuk memberikan informasi mengenai kegiatan,
-                    tim, serta berbagai materi visual Sarpras.
 
-                </p>
+        <!-- =========================
+             TUJUAN
+        ========================== -->
+        <section class="purpose-section">
+
+            <div class="purpose-title">
+
+                🎯
+
+                <strong>TUJUAN</strong>
 
             </div>
 
 
-            <div>
+            <p>
+                Mewujudkan koordinasi yang efektif, fasilitasi yang
+                responsif, pemantauan yang akurat, dan evaluasi yang
+                objektif untuk pembangunan sarana prasarana yang
+                berkualitas dan berkelanjutan di wilayah kerja
+                Bakorwil III Malang.
+            </p>
 
-                <h4>
-                    Navigasi
-                </h4>
-
-                <a href="#tentang">
-                    Tentang
-                </a>
-
-                <a href="#tim">
-                    Tim
-                </a>
-
-                <a href="#infografis">
-                    Infografis
-                </a>
-
-                <a href="#dokumentasi">
-                    Dokumentasi
-                </a>
-
-            </div>
+        </section>
 
 
-            <div>
+    </main>
 
-                <h4>
-                    Kontak
-                </h4>
-
-                <p>
-                    Alamat Instansi
-                </p>
-
-                <p>
-                    Telepon / Email
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <span>
-                © {{ date('Y') }} Bidang Sarana dan Prasarana.
-            </span>
-
-            <span>
-                Informasi • Pelayanan • Sarana
-            </span>
-
-        </div>
-
-    </div>
-
-</footer>
-
+</div>
 
 @endsection
