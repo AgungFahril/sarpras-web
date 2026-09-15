@@ -10,7 +10,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     background: #f3f7fa;
     color: #173e68;
 }
@@ -45,45 +45,63 @@ a {
     top: 0;
     bottom: 0;
 
-    width: 205px;
+    width: 235px;
 
-    background: #063c69;
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(180deg, #0b3a63 0%, #062544 100%);
 
     color: white;
 
     z-index: 1000;
 
-    overflow-y: auto;
+    box-shadow: 4px 0 24px rgba(3, 20, 38, 0.18);
 }
+
+.sidebar-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar-scroll::-webkit-scrollbar { width: 4px; }
+.sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
 
 
 .sidebar-logo {
     display: flex;
     align-items: center;
 
-    gap: 10px;
+    gap: 12px;
 
-    padding: 18px 15px;
+    padding: 22px 18px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
 
 .logo-circle {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     flex-shrink: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    border-radius: 12px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.14);
+    overflow: hidden;
 }
 
 
 .logo-circle img {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
 
     object-fit: contain;
 }
@@ -92,62 +110,270 @@ a {
 .sidebar-logo strong {
     display: block;
 
-    font-size: 13px;
-    line-height: 1.2;
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    line-height: 1.25;
+    color: #ffffff;
 }
 
 
 .sidebar-logo span {
     display: block;
 
-    font-size: 12px;
-
-    margin-top: 2px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    margin-top: 3px;
+    color: rgba(255,255,255,0.55);
 }
 
 
 
 /* =========================================================
    SIDEBAR MENU
+   (selector diganti dari ".sidebar-menu a" menjadi
+    ".sidebar-menu .sidebar-link" supaya <button> ikut kena style)
 ========================================================= */
 
 .sidebar-menu {
-    padding: 12px 10px;
+    padding: 16px 12px;
 }
 
 
-.sidebar-menu a {
+.sidebar-menu .sidebar-link {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 12px;
+
+    margin-bottom: 3px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.72);
+
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+
+.sidebar-menu .sidebar-link:hover {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+}
+
+
+.sidebar-menu .sidebar-link.active {
+    background: linear-gradient(120deg, #1e88e5, #1565c0);
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(21, 101, 192, 0.35);
+}
+
+
+.menu-icon {
+    width: 26px;
+    height: 26px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    color: inherit;
+}
+
+
+.menu-text {
+    flex: 1;
+
+    white-space: nowrap;
+}
+
+
+
+/* =========================================================
+   SIDEBAR DROPDOWN "SARANA & PRASARANA"
+========================================================= */
+
+.sidebar-dropdown {
+    width: 100%;
+}
+
+
+.sidebar-dropdown-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+
+.sidebar-dropdown.open > .sidebar-dropdown-toggle {
+    background: rgba(255,255,255,0.10);
+    color: #ffffff;
+}
+
+
+.dropdown-arrow {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 16px;
+
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+}
+
+
+/* Panah berputar ke bawah saat hover ATAU saat submenu sedang terbuka */
+.sidebar-dropdown-toggle:hover .dropdown-arrow,
+.sidebar-dropdown.open .dropdown-arrow {
+    transform: rotate(90deg);
+    color: rgba(255,255,255,0.95);
+}
+
+
+.sidebar-submenu {
+    overflow: hidden;
+
+    margin: 2px 0 4px 34px;
+
+    border-left: 1px solid rgba(255,255,255,0.14);
+
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.sidebar-submenu a {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 8px 10px 8px 14px;
+
+    margin-left: -1px;
+
+    border-left: 2px solid transparent;
+
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: rgba(255,255,255,0.55);
+
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+
+.sidebar-submenu a span {
+    width: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+
+.sidebar-submenu a:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,0.06);
+    border-left-color: rgba(255,255,255,0.4);
+}
+
+
+.sidebar-submenu a.active {
+    color: #ffffff;
+    font-weight: 700;
+    background: rgba(30,136,229,0.18);
+    border-left-color: #1e88e5;
+}
+
+
+
+/* =========================================================
+   SIDEBAR FOOTER / BRANDING
+========================================================= */
+
+.sidebar-footer {
+    padding: 16px 18px 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+
+.sidebar-status {
     display: flex;
     align-items: center;
 
     gap: 10px;
 
-    padding: 10px 11px;
+    padding: 10px 12px;
 
-    margin-bottom: 3px;
+    border-radius: 10px;
 
-    border-radius: 8px;
-
-    color: white;
-
-    font-size: 12px;
-
-    transition: 0.2s ease;
+    background: rgba(255,255,255,0.06);
 }
 
 
-.sidebar-menu a:hover {
-    background: rgba(255,255,255,0.12);
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #41d889;
+
+    box-shadow: 0 0 0 4px rgba(65,216,137,0.15);
 }
 
 
-.sidebar-menu a.active {
-    background: #1478d1;
+.sidebar-status div {
+    display: flex;
+    flex-direction: column;
 }
 
 
-.sidebar-menu a span {
-    white-space: nowrap;
+.sidebar-status strong {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+
+.sidebar-status small {
+    margin-top: 2px;
+
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.45);
 }
 
 
@@ -157,9 +383,9 @@ a {
 ========================================================= */
 
 .dashboard-main {
-    margin-left: 205px;
+    margin-left: 235px;
 
-    width: calc(100% - 205px);
+    width: calc(100% - 235px);
 
     padding: 15px 16px 20px;
 
@@ -1012,10 +1238,6 @@ a {
    CAROUSEL FOTO WILAYAH
 ========================================================= */
 
-/* =========================================================
-   CAROUSEL FOTO WILAYAH
-========================================================= */
-
 .wilayah-carousel {
     width: 100%;
     height: 92px;
@@ -1200,26 +1422,37 @@ a {
 @media (max-width: 768px) {
 
     .sidebar {
-        width: 70px;
+        width: 74px;
     }
 
-
     .sidebar-logo strong,
-    .sidebar-logo span,
-    .sidebar-menu span {
+    .sidebar-logo span {
+        display: none;
+    }
+
+    .sidebar-logo {
+        justify-content: center;
+    }
+
+    .menu-text,
+    .dropdown-arrow,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .sidebar-menu .sidebar-link {
+        justify-content: center;
+    }
+
+    .sidebar-submenu {
         display: none;
     }
 
 
-    .sidebar-menu a {
-        justify-content: center;
-    }
-
-
     .dashboard-main {
-        margin-left: 70px;
+        margin-left: 74px;
 
-        width: calc(100% - 70px);
+        width: calc(100% - 74px);
 
         padding: 12px;
     }
