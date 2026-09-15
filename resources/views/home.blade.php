@@ -2,113 +2,114 @@
 
 @section('title', 'Dashboard Sarpras')
 
-@section('content')
+@push('styles')
+    @vite(['resources/css/dashboard.css'])
+@endpush
 
-@vite(['resources/css/dashboard.css'])
+@section('content')
 
 <div class="sarpras-dashboard">
 
     <!-- =========================
-         SIDEBAR
-    ========================== -->
-    <aside class="sidebar">
+     SIDEBAR
+========================== -->
+<aside class="sidebar">
+    
+    <!-- LOGO -->
+    <div class="sidebar-logo">
 
-        <div class="sidebar-logo">
+        <div class="logo-circle">
+            <img
+                src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}"
+                alt="Logo Bakorwil III">
+        </div>
 
-            <div class="logo-circle">
-                <img
-                    src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}"
-                    alt="Logo Bakorwil III">
-            </div>
+        <div class="sidebar-brand">
+            <strong>BAKORWIL III</strong>
+            <span>MALANG</span>
+        </div>
+
+    </div>
+
+
+    <!-- SIDEBAR MENU -->
+<nav class="sidebar-menu">
+
+    <a href="#" class="sidebar-link active">
+        <span class="menu-icon"><i class="bi bi-grid-1x2-fill"></i></span>
+        <span class="menu-text">Dashboard</span>
+    </a>
+
+    <a href="#" class="sidebar-link">
+        <span class="menu-icon"><i class="bi bi-building"></i></span>
+        <span class="menu-text">Tentang Sarpras</span>
+    </a>
+
+    <!-- SARANA & PRASARANA -->
+    <div class="sidebar-dropdown" id="sarprasDropdown">
+
+        <button type="button" class="sidebar-link sidebar-dropdown-toggle">
+            <span class="menu-icon"><i class="bi bi-signpost-split-fill"></i></span>
+            <span class="menu-text">Sarana & Prasarana</span>
+            <span class="dropdown-arrow"><i class="bi bi-chevron-right"></i></span>
+        </button>
+
+        <div class="sidebar-submenu" id="sarprasSubmenu" style="max-height: 0; overflow: hidden;">
+            <a href="#"><span><i class="bi bi-signpost-2"></i></span> Jalan & Jembatan</a>
+            <a href="#"><span><i class="bi bi-tree"></i></span> Lingkungan Hidup</a>
+            <a href="#"><span><i class="bi bi-flower2"></i></span> Kehutanan</a>
+            <a href="#"><span><i class="bi bi-lightning-charge"></i></span> ESDM</a>
+            <a href="#"><span><i class="bi bi-droplet-fill"></i></span> Sumber Daya Air</a>
+            <a href="#"><span><i class="bi bi-bus-front-fill"></i></span> Transportasi</a>
+        </div>
+
+    </div>
+
+    <a href="#" class="sidebar-link">
+        <span class="menu-icon"><i class="bi bi-clipboard-check-fill"></i></span>
+        <span class="menu-text">Program & Kegiatan</span>
+    </a>
+
+    <a href="{{ route('peta.wilayah') }}" class="sidebar-link">
+        <span class="menu-icon"><i class="bi bi-geo-alt-fill"></i></span>
+        <span class="menu-text">Wilayah Kerja</span>
+    </a>
+
+    <a href="#" class="sidebar-link">
+        <span class="menu-icon"><i class="bi bi-bar-chart-line-fill"></i></span>
+        <span class="menu-text">Infografis</span>
+    </a>
+
+    <a href="#" class="sidebar-link">
+        <span class="menu-icon"><i class="bi bi-camera-fill"></i></span>
+        <span class="menu-text">Dokumentasi</span>
+    </a>
+
+    <a href="#" class="sidebar-link">
+        <span class="menu-icon"><i class="bi bi-people-fill"></i></span>
+        <span class="menu-text">Tim Sarpras</span>
+    </a>
+
+</nav>
+
+
+    <!-- SIDEBAR BOTTOM -->
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-status">
+
+            <span class="status-dot"></span>
 
             <div>
-                <strong>BAKORWIL III</strong>
-                <span>MALANG</span>
+                <strong>Sarpras</strong>
+                <small>Bakorwil III Malang</small>
             </div>
 
         </div>
 
+    </div>
 
-        <nav class="sidebar-menu">
-
-            <a href="#" class="active">
-                🏠
-                <span>Dashboard</span>
-            </a>
-
-            <a href="#">
-                🛣️
-                <span>Jalan & Jembatan</span>
-            </a>
-
-            <a href="#">
-                🌿
-                <span>Lingkungan Hidup</span>
-            </a>
-
-            <a href="#">
-                🌳
-                <span>Kehutanan</span>
-            </a>
-
-            <a href="#">
-                ⚡
-                <span>ESDM</span>
-            </a>
-
-            <a href="#">
-                💧
-                <span>Sumber Daya Air</span>
-            </a>
-
-            <a href="#">
-                🚌
-                <span>Transportasi</span>
-            </a>
-
-            <a href="#">
-                📋
-                <span>Program / Kegiatan</span>
-            </a>
-
-            <a href="#">
-                🔍
-                <span>Monitoring & Evaluasi</span>
-            </a>
-
-            <a href="#">
-                ⚠️
-                <span>Permasalahan Wilayah</span>
-            </a>
-
-            <a href="{{ route('peta.wilayah') }}">
-                📍
-                <span>Peta Wilayah</span>
-            </a>
-
-            <a href="#">
-                📁
-                <span>Data & Dokumen</span>
-            </a>
-
-            <a href="#">
-                👥
-                <span>Koordinasi OPD</span>
-            </a>
-
-            <a href="#">
-                ✅
-                <span>Tindak Lanjut</span>
-            </a>
-
-            <a href="#">
-                📊
-                <span>Laporan</span>
-            </a>
-
-        </nav>
-
-    </aside>
+</aside>
 
 
     <!-- =========================
@@ -856,3 +857,31 @@
 </div>
 
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdown  = document.getElementById('sarprasDropdown');
+    const submenu   = document.getElementById('sarprasSubmenu');
+    const toggleBtn = dropdown.querySelector('.sidebar-dropdown-toggle');
+    let closeTimer = null;
+
+    function openSubmenu() {
+        clearTimeout(closeTimer);
+        dropdown.classList.add('open');
+        submenu.style.maxHeight = submenu.scrollHeight + 'px';
+    }
+    function closeSubmenu() {
+        dropdown.classList.remove('open');
+        submenu.style.maxHeight = '0';
+    }
+
+    dropdown.addEventListener('mouseenter', openSubmenu);
+    dropdown.addEventListener('mouseleave', () => { closeTimer = setTimeout(closeSubmenu, 180); });
+    toggleBtn.addEventListener('click', e => {
+        e.preventDefault();
+        dropdown.classList.contains('open') ? closeSubmenu() : openSubmenu();
+    });
+});
+</script>
+@endpush
