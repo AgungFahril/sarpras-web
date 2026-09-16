@@ -16,7 +16,9 @@
         <nav class="navbar">
 
             <div class="brand">
-                <div class="brand-mark"><i class="bi bi-signpost-split-fill"></i></div>
+                <div class="logo-circle">
+                    <img src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}" alt="Logo Bakorwil III">
+                </div>
                 <div class="brand-info">
                     <strong>BAKORWIL III</strong>
                     <span>SARPRAS &middot; MALANG</span>
@@ -54,82 +56,73 @@
 
 
 <!-- =========================
-     HERO
+     HERO (gaya "dashboard-header")
 ========================== -->
 <section class="hero" id="beranda">
-    <div class="hero-background"></div>
-    <div class="hero-pattern"></div>
+    <div class="container">
 
-    <div class="container hero-container">
+        <div class="hero-banner">
 
-        <div class="hero-content">
+            <div class="hero-content">
 
-            <div class="eyebrow">
-                <span class="eyebrow-line"></span>
-                SUB BIDANG SARANA DAN PRASARANA I
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    SUB BIDANG SARANA DAN PRASARANA I
+                </div>
+
+                <h1>Membangun <span>Konektivitas</span> Wilayah Jawa Timur</h1>
+
+                <p>
+                    Mengoordinasikan, memfasilitasi, memantau, dan mengevaluasi
+                    pembangunan sarana prasarana di 7 Kabupaten/Kota wilayah kerja
+                    Bakorwil III Malang.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="{{ url('/dashboard') }}" class="button button-primary">
+                        <i class="bi bi-speedometer2"></i> Lihat Dashboard Monitoring
+                    </a>
+                    <a href="#tentang" class="button button-outline">
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
+
             </div>
 
-            <h1>Membangun <span>Konektivitas</span> Wilayah Jawa Timur</h1>
-
-            <p>
-                Mengoordinasikan, memfasilitasi, memantau, dan mengevaluasi
-                pembangunan sarana prasarana di 7 Kabupaten/Kota wilayah kerja
-                Bakorwil III Malang — mulai dari jalan & jembatan, lingkungan
-                hidup, kehutanan, ESDM, sumber daya air, hingga transportasi.
-            </p>
-
-            <div class="hero-actions">
-                <a href="{{ url('/dashboard') }}" class="button button-primary">
-                    <i class="bi bi-speedometer2"></i> Lihat Dashboard Monitoring
-                </a>
-                <a href="#tentang" class="button button-outline">
-                    Pelajari Lebih Lanjut
-                </a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <strong>128</strong>
-                    <span>Program / Kegiatan Dipantau</span>
-                </div>
-                <div class="hero-stat">
-                    <strong>7</strong>
-                    <span>Kabupaten / Kota Wilayah Kerja</span>
-                </div>
-                <div class="hero-stat">
-                    <strong>68%</strong>
-                    <span>Rata-rata Progres Pelaksanaan</span>
-                </div>
+            <div class="hero-visual">
+                <img src="{{ asset('images/pemandangan.png') }}" alt="Ilustrasi Malang">
             </div>
 
         </div>
 
-        <div class="hero-visual">
+        <!-- Mini-stat, gayanya identik dengan .stat-card di dashboard -->
+        <div class="hero-stats">
 
-            <div class="hero-image">
-                <div class="image-overlay"></div>
-
-                <div class="hero-image-icon">
-                    <i class="bi bi-geo-alt-fill"></i>
-                </div>
-
-                <div class="hero-image-content">
-                    <span>WILAYAH KERJA</span>
-                    <strong>7 Kabupaten<br>& Kota</strong>
-                </div>
-            </div>
-
-            <div class="hero-card">
-                <div class="hero-card-icon"><i class="bi bi-clipboard-check-fill"></i></div>
+            <div class="hero-stat">
+                <div class="hero-stat-icon"><i class="bi bi-clipboard-check-fill"></i></div>
                 <div>
-                    <strong>128 Program</strong>
-                    <span>Sedang dipantau</span>
+                    <span>PROGRAM / KEGIATAN</span>
+                    <strong>128</strong>
+                    <small>Kegiatan Dipantau</small>
                 </div>
             </div>
 
-            <div class="hero-number">
-                <span>PROGRES</span>
-                <strong>68%</strong>
+            <div class="hero-stat">
+                <div class="hero-stat-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                <div>
+                    <span>WILAYAH KERJA</span>
+                    <strong>7</strong>
+                    <small>Kabupaten / Kota</small>
+                </div>
+            </div>
+
+            <div class="hero-stat">
+                <div class="hero-stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                <div>
+                    <span>PROGRES PELAKSANAAN</span>
+                    <strong>68%</strong>
+                    <small>Rata-rata Progres</small>
+                </div>
             </div>
 
         </div>
@@ -178,7 +171,7 @@
                 </div>
             </div>
 
-            {{-- TODO: ganti dengan data lama berdirinya/pengabdian yang sesuai --}}
+            {{-- TODO: ganti dengan data yang sesuai --}}
             <div class="about-experience">
                 <strong>7</strong>
                 <span>KAB/KOTA<br>TERLAYANI</span>
@@ -425,7 +418,9 @@
             <div>
                 <div class="footer-brand">
                     <div class="brand">
-                        <div class="brand-mark"><i class="bi bi-signpost-split-fill"></i></div>
+                        <div class="logo-circle">
+                            <img src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}" alt="Logo Bakorwil III">
+                        </div>
                         <div class="brand-info">
                             <strong>BAKORWIL III</strong>
                             <span>SARPRAS &middot; MALANG</span>
@@ -472,13 +467,11 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Navbar berubah gaya saat discroll
     const header = document.getElementById('siteHeader');
     window.addEventListener('scroll', function () {
-        header.classList.toggle('scrolled', window.scrollY > 30);
+        header.classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Toggle menu mobile
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileNav = document.getElementById('mobileNavigation');
 
@@ -486,7 +479,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileNav.classList.toggle('open');
     });
 
-    // Tutup menu mobile saat salah satu link diklik
     mobileNav.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
             mobileNav.classList.remove('open');
