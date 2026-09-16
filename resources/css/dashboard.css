@@ -1,3 +1,4 @@
+
 /* =========================================================
    RESET
 ========================================================= */
@@ -767,16 +768,14 @@ a {
     color: #444;
 }
 
-
-
 /* =========================================================
-   PETA
+   PETA WILAYAH KERJA
 ========================================================= */
 
 .map-section {
     width: 100%;
 
-    background: white;
+    background: #ffffff;
 
     border: 1px solid #d9e2e9;
 
@@ -784,14 +783,18 @@ a {
 
     padding: 10px;
 
-    box-shadow: 0 2px 8px rgba(0,50,100,0.04);
+    box-shadow: 0 2px 8px rgba(0, 50, 100, 0.05);
 }
 
+
+/* =========================================================
+   HEADER PETA
+========================================================= */
 
 .map-header {
     text-align: center;
 
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 }
 
 
@@ -802,16 +805,37 @@ a {
 
     font-weight: 800;
 
+    letter-spacing: 0.3px;
+
     color: #173e68;
 }
 
+
+.map-header span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    color: #7a93a8;
+}
+
+
+/* =========================================================
+   CONTAINER PETA
+========================================================= */
 
 .map-container {
     position: relative;
 
     width: 100%;
 
-    height: 225px;
+    height: 250px;
 
     overflow: hidden;
 
@@ -821,8 +845,10 @@ a {
         linear-gradient(
             180deg,
             #eaf7ff 0%,
-            #d9f1ff 100%
+            #d7efff 100%
         );
+
+    border: 1px solid #e1edf4;
 }
 
 
@@ -830,13 +856,24 @@ a {
     display: block;
 
     width: 100%;
+
     height: 100%;
 }
 
 
+/* =========================================================
+   BAYANGAN DASAR PETA
+========================================================= */
+
+.map-shadow {
+    fill: rgba(23, 62, 104, 0.08);
+
+    stroke: none;
+}
+
 
 /* =========================================================
-   WILAYAH PETA
+   WILAYAH UMUM
 ========================================================= */
 
 .wilayah {
@@ -850,56 +887,99 @@ a {
 
     cursor: pointer;
 
-    transition: 0.2s ease;
-
-    /* penting agar tidak hitam */
     fill-opacity: 1;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease,
+        stroke-width 0.2s ease,
+        opacity 0.2s ease;
+
+    transform-box: fill-box;
+
+    transform-origin: center;
 }
 
+
+/* HOVER */
 
 .wilayah:hover {
     stroke: #173e68;
 
-    stroke-width: 7;
+    stroke-width: 6;
 
-    filter: brightness(0.94);
+    filter: brightness(0.95);
+
+    transform: scale(1.025);
 }
 
 
-.tuban {
-    fill: #b4dc7c !important;
-}
+/* =========================================================
+   WARNA 9 WILAYAH
+========================================================= */
 
 
-.lamongan {
-    fill: #acd77b !important;
-}
-
-
-.gresik {
-    fill: #80c96b !important;
-}
-
-
-.bangkalan {
-    fill: #a993dd !important;
-}
-
-
-.malang {
-    fill: #e88eb5 !important;
-}
-
-
-.pasuruan {
-    fill: #f29b9c !important;
-}
-
+/* KOTA MALANG */
 
 .kota-malang {
-    fill: #79c9ec !important;
+    fill: #67b7dc;
 }
 
+
+/* KOTA BATU */
+
+.kota-batu {
+    fill: #91c96f;
+}
+
+
+/* KABUPATEN PASURUAN */
+
+.kabupaten-pasuruan {
+    fill: #f3b562;
+}
+
+
+/* KOTA PASURUAN */
+
+.kota-pasuruan {
+    fill: #f08b74;
+}
+
+
+/* KABUPATEN BLITAR */
+
+.kabupaten-blitar {
+    fill: #a78bd4;
+}
+
+
+/* KOTA BLITAR */
+
+.kota-blitar {
+    fill: #db8eb5;
+}
+
+
+/* KABUPATEN SIDOARJO */
+
+.sidoarjo {
+    fill: #77c7a5;
+}
+
+
+/* KOTA SURABAYA */
+
+.kota-surabaya {
+    fill: #6e9ed4;
+}
+
+
+/* KABUPATEN MALANG */
+
+.kabupaten-malang {
+    fill: #e6d06c;
+}
 
 
 /* =========================================================
@@ -907,7 +987,10 @@ a {
 ========================================================= */
 
 .wilayah-label {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size: 15px;
 
@@ -918,28 +1001,53 @@ a {
     text-anchor: middle;
 
     pointer-events: none;
+
+    paint-order: stroke;
+
+    stroke: rgba(255, 255, 255, 0.45);
+
+    stroke-width: 2px;
+
+    stroke-linejoin: round;
 }
 
 
 .wilayah-label.small {
-    font-size: 12px;
+    font-size: 11px;
+
+    font-weight: 800;
 }
 
+
+.wilayah-label.tiny {
+    font-size: 8px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TEXT LAUT
+========================================================= */
 
 .sea-text {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    font-size: 15px;
+    font-size: 10px;
 
-    font-weight: 600;
+    font-weight: 700;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
-    fill: #5fa8d3;
+    fill: #70afd4;
 
     text-anchor: middle;
-}
 
+    opacity: 0.8;
+}
 
 
 /* =========================================================
@@ -947,18 +1055,21 @@ a {
 ========================================================= */
 
 .compass-circle {
-    fill: rgba(255,255,255,0.75);
+    fill: rgba(255, 255, 255, 0.78);
 
     stroke: #4c92bd;
 
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 
 .compass-text {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-    font-size: 15px;
+    font-size: 14px;
 
     font-weight: 800;
 
@@ -971,6 +1082,431 @@ a {
 }
 
 
+/* =========================================================
+   LEGENDA 9 WILAYAH
+========================================================= */
+
+.wilayah-legend {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 5px 4px;
+
+    margin-top: 8px;
+
+    padding: 7px;
+
+    background: #f7fbfd;
+
+    border: 1px solid #e4edf2;
+
+    border-radius: 8px;
+}
+
+
+.legend-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    min-width: 0;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    color: #365775;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.legend-color {
+    width: 9px;
+
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+/* WARNA LEGENDA */
+
+.kota-malang-color {
+    background: #67b7dc;
+}
+
+
+.kota-batu-color {
+    background: #91c96f;
+}
+
+
+.kab-pasuruan-color {
+    background: #f3b562;
+}
+
+
+.kota-pasuruan-color {
+    background: #f08b74;
+}
+
+
+.kab-blitar-color {
+    background: #a78bd4;
+}
+
+
+.kota-blitar-color {
+    background: #db8eb5;
+}
+
+
+.sidoarjo-color {
+    background: #77c7a5;
+}
+
+
+.surabaya-color {
+    background: #6e9ed4;
+}
+
+
+.kab-malang-color {
+    background: #e6d06c;
+}
+
+/* =========================================================
+   CAROUSEL 9 WILAYAH KERJA
+========================================================= */
+
+.wilayah-carousel {
+    width: 100%;
+
+    height: 105px;
+
+    overflow: hidden;
+
+    margin-top: 9px;
+
+    border-radius: 10px;
+
+    background: #f7fbfd;
+
+    border: 1px solid #e1ebf1;
+
+    position: relative;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   EFEK GRADIENT DI KIRI DAN KANAN
+========================================================= */
+
+.wilayah-carousel::before,
+.wilayah-carousel::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 30px;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+.wilayah-carousel::before {
+    left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #f7fbfd,
+            rgba(247, 251, 253, 0)
+        );
+}
+
+
+.wilayah-carousel::after {
+    right: 0;
+
+    background:
+        linear-gradient(
+            to left,
+            #f7fbfd,
+            rgba(247, 251, 253, 0)
+        );
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.wilayah-track {
+
+    display: flex;
+
+    width: max-content;
+
+    align-items: center;
+
+    gap: 10px;
+
+    height: 100%;
+
+    padding: 6px 8px;
+
+    box-sizing: border-box;
+
+    animation:
+        wilayahBerjalan9
+        28s
+        linear
+        infinite;
+
+}
+
+
+/* =========================================================
+   ITEM
+========================================================= */
+
+.wilayah-photo {
+
+    width: 82px;
+
+    height: 91px;
+
+    flex: 0 0 82px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding: 5px 3px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e1eaf0;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 2px 5px rgba(23, 62, 104, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER ITEM
+========================================================= */
+
+.wilayah-photo:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color: #82afd0;
+
+    box-shadow:
+        0 5px 12px rgba(23, 62, 104, 0.14);
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.wilayah-photo img {
+
+    width: 57px;
+
+    height: 57px;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   NAMA WILAYAH
+========================================================= */
+
+.wilayah-photo span {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 0 2px;
+
+    color: #173e68;
+
+    text-align: center;
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    white-space: normal;
+
+}
+
+
+/* =========================================================
+   ANIMASI
+========================================================= */
+
+@keyframes wilayahBerjalan9 {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(
+                calc(
+                    -50% - 5px
+                )
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   PAUSE SAAT MOUSE DIARAHKAN
+========================================================= */
+
+.wilayah-carousel:hover
+.wilayah-track {
+
+    animation-play-state: paused;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .wilayah-carousel {
+
+        height: 102px;
+
+    }
+
+    .wilayah-photo {
+
+        width: 78px;
+
+        flex-basis: 78px;
+
+    }
+
+    .wilayah-photo img {
+
+        width: 54px;
+
+        height: 54px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .wilayah-carousel {
+
+        height: 100px;
+
+    }
+
+    .wilayah-track {
+
+        gap: 7px;
+
+    }
+
+    .wilayah-photo {
+
+        width: 72px;
+
+        flex-basis: 72px;
+
+    }
+
+    .wilayah-photo img {
+
+        width: 50px;
+
+        height: 50px;
+
+    }
+
+    .wilayah-photo span {
+
+        font-size: 6.5px;
+
+    }
+
+}
 
 /* =========================================================
    TOTAL WILAYAH
@@ -980,15 +1516,18 @@ a {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 6px;
 
     margin-top: 7px;
 
-    padding: 6px;
+    padding: 7px 6px;
 
-    background: #f2f8fc;
+    background: #eef7fc;
+
+    border: 1px solid #d9eaf3;
 
     border-radius: 8px;
 
@@ -1004,7 +1543,37 @@ a {
 
 
 .map-total strong {
-    font-size: 10px;
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE PETA
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .map-container {
+        height: 350px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .map-container {
+        height: 290px;
+    }
+
+    .wilayah-legend {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }
 
 
@@ -1232,149 +1801,6 @@ a {
     font-size: 9px;
 
     line-height: 1.6;
-}
-
-/* =========================================================
-   CAROUSEL FOTO WILAYAH
-========================================================= */
-
-.wilayah-carousel {
-    width: 100%;
-    height: 92px;
-
-    overflow: hidden;
-
-    margin-top: 8px;
-
-    border-radius: 8px;
-
-    background: transparent;
-
-    position: relative;
-}
-
-
-/* TRACK YANG BERGERAK */
-
-.wilayah-track {
-    display: flex;
-
-    width: max-content;
-
-    align-items: flex-start;
-
-    gap: 8px;
-
-    padding: 4px;
-
-    animation: wilayahBerjalan 18s linear infinite;
-}
-
-
-/* =========================================================
-   ITEM FOTO
-========================================================= */
-
-.wilayah-photo {
-
-    width: 76px;
-    height: 82px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: flex-start;
-
-    background: transparent;
-
-    border-radius: 6px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.wilayah-photo img {
-
-    width: 60px;
-    height: 58px;
-
-    display: block;
-
-    object-fit: contain;
-
-    object-position: center;
-
-    background: transparent;
-
-    border: none;
-
-    box-shadow: none;
-}
-
-
-/* =========================================================
-   LABEL DI BAWAH LOGO
-========================================================= */
-
-.wilayah-photo span {
-
-    display: block;
-
-    width: 100%;
-
-    margin-top: 3px;
-
-    padding: 0;
-
-    background: transparent;
-
-    color: #173e68;
-
-    text-align: center;
-
-    font-size: 7px;
-
-    font-weight: 700;
-
-    line-height: 1.1;
-
-    white-space: nowrap;
-}
-
-
-/* =========================================================
-   ANIMASI BERGERAK KE KIRI
-========================================================= */
-
-@keyframes wilayahBerjalan {
-
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-
-}
-
-
-/* =========================================================
-   PAUSE SAAT MOUSE DIARAHKAN
-========================================================= */
-
-.wilayah-carousel:hover .wilayah-track {
-
-    animation-play-state: paused;
-
 }
 
 /* =========================================================

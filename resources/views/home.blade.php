@@ -415,20 +415,18 @@
             ========================== -->
             <div class="right-column">
 
+            <!-- =====================
+                 PETA WILAYAH KERJA
+            ====================== -->
+    <div class="map-section">
 
-          <!-- =====================
-     PETA WILAYAH KERJA
-====================== -->
-<div class="map-section">
-
-    <!-- JUDUL -->
-    <div class="map-header">
-        <h2>PETA WILAYAH KERJA</h2>
+        <!-- JUDUL -->
+        <div class="map-header">
+        <h2>PETA WILAYAH KERJA</h2> 
     </div>
 
-
     <!-- =====================
-         PETA SVG
+         PETA SVG 9 WILAYAH
     ====================== -->
     <div class="map-container">
 
@@ -438,308 +436,578 @@
             xmlns="http://www.w3.org/2000/svg"
         >
 
-            <!-- LAUT JAWA -->
-            <text
-                x="555"
-                y="75"
-                class="sea-text"
-            >
-                LAUT JAWA
-            </text>
+            <!-- =====================
+                 BACKGROUND / AREA JAWA TIMUR
+            ====================== -->
+            <path
+                class="map-shadow"
+                d="
+                    M95 175
+                    L165 105
+                    L285 82
+                    L405 92
+                    L525 78
+                    L615 122
+                    L635 205
+                    L605 295
+                    L560 355
+                    L450 425
+                    L345 462
+                    L235 448
+                    L135 400
+                    L85 335
+                    L70 250
+                    Z
+                "
+            />
 
 
             <!-- =====================
-                 TUBAN
+                 KOTA SURABAYA
+                 (paling utara, di tepi pantai)
             ====================== -->
             <path
-                class="wilayah tuban"
-                d="M120 90
-                   L170 55
-                   L240 48
-                   L285 65
-                   L330 55
-                   L370 80
-                   L390 125
-                   L355 155
-                   L310 160
-                   L270 145
-                   L220 160
-                   L175 145
-                   L135 155
-                   L110 125 Z"
+                class="wilayah kota-surabaya"
+                d="
+                    M462 95
+                    L532 80
+                    L578 118
+                    L562 168
+                    L502 178
+                    L458 138
+                    Z
+                "
             />
 
             <text
-                x="245"
-                y="110"
-                class="wilayah-label"
-            >
-                TUBAN
-            </text>
-
-
-            <!-- =====================
-                 LAMONGAN
-            ====================== -->
-            <path
-                class="wilayah lamongan"
-                d="M390 80
-                   L445 70
-                   L500 90
-                   L535 120
-                   L520 165
-                   L485 190
-                   L430 175
-                   L395 150
-                   L355 155
-                   L390 125 Z"
-            />
-
-            <text
-                x="445"
-                y="130"
-                class="wilayah-label"
-            >
-                LAMONGAN
-            </text>
-
-
-            <!-- =====================
-                 GRESIK
-            ====================== -->
-            <path
-                class="wilayah gresik"
-                d="M535 120
-                   L590 110
-                   L635 135
-                   L650 175
-                   L625 220
-                   L585 230
-                   L545 210
-                   L520 165 Z"
-            />
-
-            <text
-                x="585"
-                y="175"
-                class="wilayah-label"
-            >
-                GRESIK
-            </text>
-
-
-            <!-- =====================
-                 BANGKALAN
-            ====================== -->
-            <path
-                class="wilayah bangkalan"
-                d="M100 160
-                   L135 155
-                   L175 145
-                   L220 160
-                   L205 200
-                   L175 225
-                   L145 250
-                   L115 235
-                   L95 205
-                   L80 180 Z"
-            />
-
-            <text
-                x="145"
-                y="200"
-                class="wilayah-label"
-            >
-                BANGKALAN
-            </text>
-
-
-            <!-- =====================
-                 MALANG
-            ====================== -->
-            <path
-                class="wilayah malang"
-                d="M260 180
-                   L310 160
-                   L355 155
-                   L395 180
-                   L430 210
-                   L420 255
-                   L390 290
-                   L345 300
-                   L300 285
-                   L260 300
-                   L225 270
-                   L210 230 Z"
-            />
-
-            <text
-                x="320"
-                y="235"
-                class="wilayah-label"
-            >
-                MALANG
-            </text>
-
-
-            <!-- =====================
-                 PASURUAN
-            ====================== -->
-            <path
-                class="wilayah pasuruan"
-                d="M430 210
-                   L485 190
-                   L545 210
-                   L575 235
-                   L560 280
-                   L530 315
-                   L480 325
-                   L440 305
-                   L420 255 Z"
-            />
-
-            <text
-                x="500"
-                y="260"
-                class="wilayah-label"
-            >
-                PASURUAN
-            </text>
-
-
-            <!-- =====================
-                 KOTA MALANG
-            ====================== -->
-            <path
-                class="wilayah kota-malang"
-                d="M300 285
-                   L345 300
-                   L390 290
-                   L405 325
-                   L385 360
-                   L350 375
-                   L315 355
-                   L285 330 Z"
-            />
-
-            <text
-                x="345"
-                y="330"
-                text-anchor="middle"
+                x="518"
+                y="122"
                 class="wilayah-label small"
             >
                 KOTA
             </text>
 
             <text
-                x="345"
-                y="348"
-                text-anchor="middle"
+                x="518"
+                y="138"
                 class="wilayah-label small"
+            >
+                SURABAYA
+            </text>
+
+
+            <!-- =====================
+                 KABUPATEN SIDOARJO
+                 (tepat di selatan Surabaya)
+            ====================== -->
+            <path
+                class="wilayah sidoarjo"
+                d="
+                    M458 138
+                    L502 178
+                    L562 168
+                    L588 218
+                    L548 262
+                    L478 248
+                    L438 195
+                    Z
+                "
+            />
+
+            <text
+                x="510"
+                y="205"
+                class="wilayah-label small"
+            >
+                KAB.
+            </text>
+
+            <text
+                x="510"
+                y="221"
+                class="wilayah-label small"
+            >
+                SIDOARJO
+            </text>
+
+
+            <!-- =====================
+                 KOTA PASURUAN
+                 (enclave pesisir, timur Sidoarjo)
+            ====================== -->
+            <path
+                class="wilayah kota-pasuruan"
+                d="
+                    M548 262
+                    L588 218
+                    L616 238
+                    L620 278
+                    L586 302
+                    L552 288
+                    Z
+                "
+            />
+
+            <text
+                x="585"
+                y="258"
+                class="wilayah-label tiny"
+            >
+                KOTA
+            </text>
+
+            <text
+                x="585"
+                y="270"
+                class="wilayah-label tiny"
+            >
+                PASURUAN
+            </text>
+
+
+            <!-- =====================
+                 KABUPATEN PASURUAN
+                 (selatan Sidoarjo & Kota Pasuruan)
+            ====================== -->
+            <path
+                class="wilayah kabupaten-pasuruan"
+                d="
+                    M438 195
+                    L478 248
+                    L548 262
+                    L552 288
+                    L586 302
+                    L560 355
+                    L472 385
+                    L392 335
+                    L378 245
+                    Z
+                "
+            />
+
+            <text
+                x="475"
+                y="300"
+                class="wilayah-label small"
+            >
+                KAB.
+            </text>
+
+            <text
+                x="475"
+                y="316"
+                class="wilayah-label small"
+            >
+                PASURUAN
+            </text>
+
+
+            <!-- =====================
+                 KABUPATEN MALANG
+                 (wilayah tengah, terbesar)
+            ====================== -->
+            <path
+                class="wilayah kabupaten-malang"
+                d="
+                    M278 230
+                    L378 245
+                    L392 335
+                    L472 385
+                    L442 435
+                    L340 465
+                    L245 445
+                    L188 395
+                    L172 315
+                    L205 265
+                    Z
+                "
+            />
+
+            <text
+                x="305"
+                y="378"
+                class="wilayah-label small"
+            >
+                KABUPATEN
+            </text>
+
+            <text
+                x="305"
+                y="396"
+                class="wilayah-label"
             >
                 MALANG
             </text>
 
 
             <!-- =====================
-                 KOMPAS
+                 KOTA BATU
+                 (enclave utara Kab. Malang)
             ====================== -->
-            <circle
-                cx="625"
-                cy="395"
-                r="32"
-                class="compass-circle"
+            <path
+                class="wilayah kota-batu"
+                d="
+                    M292 208
+                    L342 188
+                    L378 218
+                    L358 258
+                    L308 264
+                    L278 228
+                    Z
+                "
             />
 
             <text
-                x="625"
-                y="355"
-                text-anchor="middle"
-                class="compass-text"
+                x="328"
+                y="230"
+                class="wilayah-label tiny"
             >
-                N
+                KOTA BATU
             </text>
 
+
+            <!-- =====================
+                 KOTA MALANG
+                 (enclave di tengah Kab. Malang)
+            ====================== -->
             <path
-                d="M625 365
-                   L638 400
-                   L625 390
-                   L612 400 Z"
-                class="compass-arrow"
+                class="wilayah kota-malang"
+                d="
+                    M300 305
+                    L346 295
+                    L372 326
+                    L352 360
+                    L306 358
+                    L280 328
+                    Z
+                "
             />
+
+            <text
+                x="326"
+                y="326"
+                class="wilayah-label tiny"
+            >
+                KOTA
+            </text>
+
+            <text
+                x="326"
+                y="338"
+                class="wilayah-label tiny"
+            >
+                MALANG
+            </text>
+
+
+            <!-- =====================
+                 KABUPATEN BLITAR
+                 (barat Kab. Malang)
+            ====================== -->
+            <path
+                class="wilayah kabupaten-blitar"
+                d="
+                    M172 315
+                    L188 395
+                    L245 445
+                    L340 465
+                    L272 492
+                    L172 476
+                    L98 424
+                    L78 342
+                    L112 272
+                    Z
+                "
+            />
+
+            <text
+                x="165"
+                y="453"
+                class="wilayah-label small"
+            >
+                KABUPATEN
+            </text>
+
+            <text
+                x="165"
+                y="471"
+                class="wilayah-label"
+            >
+                BLITAR
+            </text>
+
+
+            <!-- =====================
+                 KOTA BLITAR
+                 (enclave di tengah Kab. Blitar)
+            ====================== -->
+            <path
+                class="wilayah kota-blitar"
+                d="
+                    M178 378
+                    L220 368
+                    L246 394
+                    L226 420
+                    L184 414
+                    L162 392
+                    Z
+                "
+            />
+
+            <text
+                x="203"
+                y="396"
+                class="wilayah-label tiny"
+            >
+                KOTA
+            </text>
+
+            <text
+                x="203"
+                y="408"
+                class="wilayah-label tiny"
+            >
+                BLITAR
+            </text>
+
+
+            <!-- =====================
+                 LABEL LAUT
+            ====================== -->
+            <text
+                x="480"
+                y="475"
+                class="sea-text"
+            >
+                SAMUDERA INDONESIA
+            </text>
+
+
+            <!-- =====================
+                 KOMPAS
+            ====================== -->
+            <g class="compass">
+                <circle
+                    cx="655"
+                    cy="418"
+                    r="28"
+                    class="compass-circle"
+                />
+
+                <text
+                    x="655"
+                    y="376"
+                    text-anchor="middle"
+                    class="compass-text"
+                >
+                    N
+                </text>
+
+                <path
+                    d="
+                        M655 386
+                        L668 424
+                        L655 416
+                        L642 424
+                        Z
+                    "
+                    class="compass-arrow"
+                />
+            </g>
 
         </svg>
 
     </div>
+    
+    <!-- =====================================================
+         CAROUSEL 9 LOGO / FOTO WILAYAH
+    ====================================================== -->
+    <div class="wilayah-carousel">
+
+        <div class="wilayah-track">
+
+            <!-- SET 1 -->
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Malang.png') }}"
+                     alt="Logo Kota Malang">
+                <span>KOTA MALANG</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota_Batu.png') }}"
+                     alt="Logo Kota Batu">
+                <span>KOTA BATU</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}"
+                     alt="Logo Kabupaten Pasuruan">
+                <span>KAB. PASURUAN</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}"
+                     alt="Logo Kota Pasuruan">
+                <span>KOTA PASURUAN</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/kabupaten-blitar.jpg') }}"
+                     alt="Logo Kabupaten Blitar">
+                <span>KAB. BLITAR</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Blitar.png') }}"
+                     alt="Logo Kota Blitar">
+                <span>KOTA BLITAR</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kabupaten-Sidoarjo.png') }}"
+                     alt="Logo Kabupaten Sidoarjo">
+                <span>KAB. SIDOARJO</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Surabaya.png') }}"
+                     alt="Logo Kota Surabaya">
+                <span>KOTA SURABAYA</span>
+            </div>
+
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}"
+                     alt="Logo Kabupaten Malang">
+                <span>KAB. MALANG</span>
+            </div>
 
 
-  <!-- =========================
-     FOTO 7 WILAYAH
-========================== --> 
-{{-- =========================
-     FOTO WILAYAH
-========================= --}}
-<div class="wilayah-carousel">
+            <!-- SET 2 - DUPLIKASI -->
 
-    <div class="wilayah-track">
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Malang.png') }}"
+                     alt="Logo Kota Malang">
+                <span>KOTA MALANG</span>
+            </div>
 
-        {{-- SET 1 --}}
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kota-Malang.png') }}" alt="Kota Malang">
-            <span>KOTA MALANG</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota_Batu.png') }}"
+                     alt="Logo Kota Batu">
+                <span>KOTA BATU</span>
+            </div>
 
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}" alt="Kota Pasuruan">
-            <span>KOTA PASURUAN</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}"
+                     alt="Logo Kabupaten Pasuruan">
+                <span>KAB. PASURUAN</span>
+            </div>
 
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}" alt="Kabupaten Malang">
-            <span>KAB. MALANG</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}"
+                     alt="Logo Kota Pasuruan">
+                <span>KOTA PASURUAN</span>
+            </div>
 
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}" alt="Kabupaten Pasuruan">
-            <span>KAB. PASURUAN</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/kabupaten-blitar.jpg') }}"
+                     alt="Logo Kabupaten Blitar">
+                <span>KAB. BLITAR</span>
+            </div>
 
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Blitar.png') }}"
+                     alt="Logo Kota Blitar">
+                <span>KOTA BLITAR</span>
+            </div>
 
-        {{-- SET 2 / DUPLIKASI UNTUK ANIMASI --}}
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kota-Malang.png') }}" alt="Kota Malang">
-            <span>KOTA MALANG</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kabupaten-Sidoarjo.png') }}"
+                     alt="Logo Kabupaten Sidoarjo">
+                <span>KAB. SIDOARJO</span>
+            </div>
 
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}" alt="Kota Pasuruan">
-            <span>KOTA PASURUAN</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kota-Surabaya.png') }}"
+                     alt="Logo Kota Surabaya">
+                <span>KOTA SURABAYA</span>
+            </div>
 
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}" alt="Kabupaten Malang">
-            <span>KAB. MALANG</span>
-        </div>
+            <div class="wilayah-photo">
+                <img src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}"
+                     alt="Logo Kabupaten Malang">
+                <span>KAB. MALANG</span>
+            </div>
 
-        <div class="wilayah-photo">
-            <img src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}" alt="Kabupaten Pasuruan">
-            <span>KAB. PASURUAN</span>
         </div>
 
     </div>
 
-</div>
+    <!-- =========================
+         DAFTAR 9 WILAYAH
+    ========================== -->
+    <div class="wilayah-legend">
 
-    {{-- =========================
-     TOTAL WILAYAH
-    ========================== --}}
-<div class="map-total">
+        <div class="legend-item">
+            <span class="legend-color kota-malang-color"></span>
+            <span>Kota Malang</span>
+        </div>
 
-    <span>📍</span>
+        <div class="legend-item">
+            <span class="legend-color kota-batu-color"></span>
+            <span>Kota Batu</span>
+        </div>
 
-    <strong>
-        7 KABUPATEN / KOTA
-    </strong>
+        <div class="legend-item">
+            <span class="legend-color kab-pasuruan-color"></span>
+            <span>Kab. Pasuruan</span>
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color kota-pasuruan-color"></span>
+            <span>Kota Pasuruan</span>
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color kab-blitar-color"></span>
+            <span>Kab. Blitar</span>
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color kota-blitar-color"></span>
+            <span>Kota Blitar</span>
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color sidoarjo-color"></span>
+            <span>Kab. Sidoarjo</span>
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color surabaya-color"></span>
+            <span>Kota Surabaya</span>
+        </div>
+
+        <div class="legend-item">
+            <span class="legend-color kab-malang-color"></span>
+            <span>Kab. Malang</span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOTAL WILAYAH
+    ========================== -->
+    <div class="map-total">
+
+        <span>📍</span>
+
+        <strong>
+            9 KABUPATEN / KOTA WILAYAH KERJA
+        </strong>
+
+    </div>
 
 </div>
 

@@ -2,467 +2,1193 @@
 
 @section('title', 'Peta Wilayah Kerja')
 
+@push('styles')
+    @vite([
+        'resources/css/dashboard.css',
+        'resources/css/peta-wilayah.css'
+    ])
+
+    {{-- Leaflet --}}
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIINfQ3Yc2s9xYQ1w0Q8F6QJ4zXKxJ7bX0="
+        crossorigin=""
+    />
+@endpush
+
 @section('content')
 
-@vite(['resources/css/peta-wilayah.css'])
+<div class="sarpras-dashboard">
 
-<div class="peta-page">
+    {{-- =====================================================
+         SIDEBAR
+    ====================================================== --}}
 
-    {{-- =========================
-         HEADER
-    ========================== --}}
-    <div class="peta-page-header">
-        <div>
-            <span class="peta-kicker">BAKORWIL III MALANG</span>
-            <h1>PETA WILAYAH KERJA</h1>
-            <p>
-                Wilayah kerja Sub Bidang Sarana dan Prasarana I
-            </p>
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-circle">
+                <img
+                    src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}"
+                    alt="Logo Bakorwil III">
+            </div>
+
+            <div class="sidebar-brand">
+                <strong>BAKORWIL III</strong>
+                <span>MALANG</span>
+            </div>
+
         </div>
-    </div>
 
 
-    {{-- =========================
-         CONTENT UTAMA
-    ========================== --}}
-    <div class="peta-layout">
+        <nav class="sidebar-menu">
 
-        {{-- =========================
-             KIRI : PETA
-        ========================== --}}
-        <main class="peta-main">
+            <a href="{{ url('/') }}" class="sidebar-link">
 
-            <div class="peta-card">
+                <span class="menu-icon">
+                    <i class="bi bi-grid-1x2-fill"></i>
+                </span>
 
-                <div class="peta-card-header">
-                    <div>
-                        <span class="peta-icon">🗺️</span>
-                        <h2>PETA WILAYAH KERJA</h2>
-                    </div>
+                <span class="menu-text">
+                    Dashboard
+                </span>
 
-                    <span class="jumlah-wilayah">
-                        7 Wilayah
+            </a>
+
+
+            <a href="#" class="sidebar-link">
+
+                <span class="menu-icon">
+                    <i class="bi bi-building"></i>
+                </span>
+
+                <span class="menu-text">
+                    Tentang Sarpras
+                </span>
+
+            </a>
+
+
+            <div class="sidebar-dropdown" id="sarprasDropdown">
+
+                <button
+                    type="button"
+                    class="sidebar-link sidebar-dropdown-toggle">
+
+                    <span class="menu-icon">
+                        <i class="bi bi-signpost-split-fill"></i>
                     </span>
-                </div>
+
+                    <span class="menu-text">
+                        Sarana & Prasarana
+                    </span>
+
+                    <span class="dropdown-arrow">
+                        <i class="bi bi-chevron-right"></i>
+                    </span>
+
+                </button>
 
 
-                {{-- =========================
-                     PETA SVG KAMU
-                ========================== --}}
-                <div class="map-container">
+                <div
+                    class="sidebar-submenu"
+                    id="sarprasSubmenu"
+                    style="max-height:0; overflow:hidden;">
 
-                    <svg
-                        class="wilayah-map"
-                        viewBox="0 0 700 500"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <a href="#">
+                        <span>
+                            <i class="bi bi-signpost-2"></i>
+                        </span>
+                        Jalan & Jembatan
+                    </a>
 
-                        {{-- LAUT JAWA --}}
-                        <text
-                            x="555"
-                            y="75"
-                            class="sea-text"
-                        >
-                            LAUT JAWA
-                        </text>
+                    <a href="#">
+                        <span>
+                            <i class="bi bi-tree"></i>
+                        </span>
+                        Lingkungan Hidup
+                    </a>
 
+                    <a href="#">
+                        <span>
+                            <i class="bi bi-flower2"></i>
+                        </span>
+                        Kehutanan
+                    </a>
 
-                        {{-- TUBAN --}}
-                        <path
-                            class="wilayah tuban"
-                            d="M120 90
-                               L170 55
-                               L240 48
-                               L285 65
-                               L330 55
-                               L370 80
-                               L390 125
-                               L355 155
-                               L310 160
-                               L270 145
-                               L220 160
-                               L175 145
-                               L135 155
-                               L110 125 Z"
-                        />
+                    <a href="#">
+                        <span>
+                            <i class="bi bi-lightning-charge"></i>
+                        </span>
+                        ESDM
+                    </a>
 
-                        <text
-                            x="245"
-                            y="110"
-                            class="wilayah-label"
-                        >
-                            TUBAN
-                        </text>
+                    <a href="#">
+                        <span>
+                            <i class="bi bi-droplet-fill"></i>
+                        </span>
+                        Sumber Daya Air
+                    </a>
 
-
-                        {{-- LAMONGAN --}}
-                        <path
-                            class="wilayah lamongan"
-                            d="M390 80
-                               L445 70
-                               L500 90
-                               L535 120
-                               L520 165
-                               L485 190
-                               L430 175
-                               L395 150
-                               L355 155
-                               L390 125 Z"
-                        />
-
-                        <text
-                            x="445"
-                            y="130"
-                            class="wilayah-label"
-                        >
-                            LAMONGAN
-                        </text>
-
-
-                        {{-- GRESIK --}}
-                        <path
-                            class="wilayah gresik"
-                            d="M535 120
-                               L590 110
-                               L635 135
-                               L650 175
-                               L625 220
-                               L585 230
-                               L545 210
-                               L520 165 Z"
-                        />
-
-                        <text
-                            x="585"
-                            y="175"
-                            class="wilayah-label"
-                        >
-                            GRESIK
-                        </text>
-
-
-                        {{-- BANGKALAN --}}
-                        <path
-                            class="wilayah bangkalan"
-                            d="M100 160
-                               L135 155
-                               L175 145
-                               L220 160
-                               L205 200
-                               L175 225
-                               L145 250
-                               L115 235
-                               L95 205
-                               L80 180 Z"
-                        />
-
-                        <text
-                            x="145"
-                            y="200"
-                            class="wilayah-label"
-                        >
-                            BANGKALAN
-                        </text>
-
-
-                        {{-- MALANG --}}
-                        <path
-                            class="wilayah malang"
-                            d="M260 180
-                               L310 160
-                               L355 155
-                               L395 180
-                               L430 210
-                               L420 255
-                               L390 290
-                               L345 300
-                               L300 285
-                               L260 300
-                               L225 270
-                               L210 230 Z"
-                        />
-
-                        <text
-                            x="320"
-                            y="235"
-                            class="wilayah-label"
-                        >
-                            MALANG
-                        </text>
-
-
-                        {{-- PASURUAN --}}
-                        <path
-                            class="wilayah pasuruan"
-                            d="M430 210
-                               L485 190
-                               L545 210
-                               L575 235
-                               L560 280
-                               L530 315
-                               L480 325
-                               L440 305
-                               L420 255 Z"
-                        />
-
-                        <text
-                            x="500"
-                            y="260"
-                            class="wilayah-label"
-                        >
-                            PASURUAN
-                        </text>
-
-
-                        {{-- KOTA MALANG --}}
-                        <path
-                            class="wilayah kota-malang"
-                            d="M300 285
-                               L345 300
-                               L390 290
-                               L405 325
-                               L385 360
-                               L350 375
-                               L315 355
-                               L285 330 Z"
-                        />
-
-                        <text
-                            x="345"
-                            y="330"
-                            text-anchor="middle"
-                            class="wilayah-label small"
-                        >
-                            KOTA
-                        </text>
-
-                        <text
-                            x="345"
-                            y="348"
-                            text-anchor="middle"
-                            class="wilayah-label small"
-                        >
-                            MALANG
-                        </text>
-
-
-                        {{-- KOMPAS --}}
-                        <circle
-                            cx="625"
-                            cy="395"
-                            r="32"
-                            class="compass-circle"
-                        />
-
-                        <text
-                            x="625"
-                            y="355"
-                            text-anchor="middle"
-                            class="compass-text"
-                        >
-                            N
-                        </text>
-
-                        <path
-                            d="M625 365
-                               L638 400
-                               L625 390
-                               L612 400 Z"
-                            class="compass-arrow"
-                        />
-
-                    </svg>
-
-                </div>
-
-            </div>
-
-        </main>
-
-
-        {{-- =========================
-             KANAN : SIDEBAR
-        ========================== --}}
-        <aside class="peta-sidebar">
-
-            {{-- =========================
-                 CARI
-            ========================== --}}
-            <div class="peta-side-card">
-
-                <div class="side-title">
-                    <span>🔎</span>
-                    <h3>CARI WILAYAH</h3>
-                </div>
-
-                <form class="search-wilayah">
-                    <input
-                        type="text"
-                        placeholder="Cari wilayah..."
-                    >
-
-                    <button type="button">
-                        CARI
-                    </button>
-                </form>
-
-            </div>
-
-
-            {{-- =========================
-                 WILAYAH KERJA
-            ========================== --}}
-            <div class="peta-side-card wilayah-card">
-
-                <div class="side-title">
-                    <span>📍</span>
-                    <h3>WILAYAH KERJA</h3>
-                </div>
-
-
-                <div class="wilayah-carousel">
-
-                    <button class="carousel-btn prev">
-                        ‹
-                    </button>
-
-
-                    <div class="wilayah-track">
-
-                        <div class="wilayah-photo">
-                            <img
-                                src="{{ asset('images/Wilayah/Kota-Malang.png') }}"
-                                alt="Kota Malang"
-                            >
-                            <span>KOTA MALANG</span>
-                        </div>
-
-                        <div class="wilayah-photo">
-                            <img
-                                src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}"
-                                alt="Kota Pasuruan"
-                            >
-                            <span>KOTA PASURUAN</span>
-                        </div>
-
-                        <div class="wilayah-photo">
-                            <img
-                                src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}"
-                                alt="Kabupaten Malang"
-                            >
-                            <span>KAB. MALANG</span>
-                        </div>
-
-                        <div class="wilayah-photo">
-                            <img
-                                src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}"
-                                alt="Kabupaten Pasuruan"
-                            >
-                            <span>KAB. PASURUAN</span>
-                        </div>
-
-                    </div>
-
-
-                    <button class="carousel-btn next">
-                        ›
-                    </button>
+                    <a href="#">
+                        <span>
+                            <i class="bi bi-bus-front-fill"></i>
+                        </span>
+                        Transportasi
+                    </a>
 
                 </div>
 
             </div>
 
 
-            {{-- =========================
-                 AGENDA
-            ========================== --}}
-            <div class="peta-side-card agenda-card">
+            <a href="#" class="sidebar-link">
 
-                <div class="side-title">
-                    <span>📅</span>
-                    <h3>AGENDA</h3>
-                </div>
+                <span class="menu-icon">
+                    <i class="bi bi-clipboard-check-fill"></i>
+                </span>
 
-                <div class="agenda-date">
-                    SEPTEMBER 2026
-                </div>
+                <span class="menu-text">
+                    Program & Kegiatan
+                </span>
 
-                <div class="agenda-item">
-                    <span class="agenda-dot blue"></span>
-
-                    <div>
-                        <strong>
-                            Monitoring Sarana Prasarana
-                        </strong>
-
-                        <small>
-                            Kabupaten Malang
-                        </small>
-                    </div>
-                </div>
+            </a>
 
 
-                <div class="agenda-item">
-                    <span class="agenda-dot green"></span>
+            <a
+                href="{{ route('peta.wilayah') }}"
+                class="sidebar-link active">
 
-                    <div>
-                        <strong>
-                            Koordinasi Penanganan
-                        </strong>
+                <span class="menu-icon">
+                    <i class="bi bi-geo-alt-fill"></i>
+                </span>
 
-                        <small>
-                            Kabupaten Pasuruan
-                        </small>
-                    </div>
-                </div>
+                <span class="menu-text">
+                    Wilayah Kerja
+                </span>
+
+            </a>
 
 
-                <div class="agenda-item">
-                    <span class="agenda-dot orange"></span>
+            <a href="#" class="sidebar-link">
 
-                    <div>
-                        <strong>
-                            Evaluasi Program
-                        </strong>
+                <span class="menu-icon">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                </span>
 
-                        <small>
-                            Kota Malang
-                        </small>
-                    </div>
+                <span class="menu-text">
+                    Infografis
+                </span>
+
+            </a>
+
+
+            <a href="#" class="sidebar-link">
+
+                <span class="menu-icon">
+                    <i class="bi bi-camera-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Dokumentasi
+                </span>
+
+            </a>
+
+
+            <a href="#" class="sidebar-link">
+
+                <span class="menu-icon">
+                    <i class="bi bi-people-fill"></i>
+                </span>
+
+                <span class="menu-text">
+                    Tim Sarpras
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+
+                    <strong>Sarpras</strong>
+
+                    <small>
+                        Bakorwil III Malang
+                    </small>
+
                 </div>
 
             </div>
 
-        </aside>
+        </div>
 
-    </div>
+    </aside>
+
+
+    {{-- =====================================================
+         KONTEN UTAMA
+    ====================================================== --}}
+
+    <main class="dashboard-main">
+
+        <div class="peta-page">
+
+
+            {{-- =================================================
+                 HEADER
+            ================================================== --}}
+
+            <div class="peta-page-header">
+
+                <span class="peta-header-icon">
+                    🗺️
+                </span>
+
+                <h1>
+                    Peta Wilayah Kerja
+                </h1>
+
+            </div>
+
+
+            {{-- =================================================
+                 LAYOUT
+            ================================================== --}}
+
+            <div class="peta-layout">
+
+
+                {{-- =================================================
+                     PETA
+                ================================================== --}}
+
+                <main class="peta-main">
+
+                    <div class="peta-card">
+
+                        <div class="map-container">
+
+                            <div id="leaflet-map"></div>
+
+                        </div>
+
+                    </div>
+
+                </main>
+
+
+                {{-- =================================================
+                     SIDEBAR KANAN
+                ================================================== --}}
+
+                <aside class="peta-sidebar">
+
+
+                    {{-- =================================================
+                         SEARCH
+                    ================================================== --}}
+
+                    <div class="peta-side-card">
+
+                        <div class="side-title">
+
+                            <span>
+                                🔎
+                            </span>
+
+                            <h3>
+                                CARI WILAYAH
+                            </h3>
+
+                        </div>
+
+
+                        <form
+                            class="search-wilayah"
+                            id="formCariWilayah">
+
+                            <input
+                                type="text"
+                                id="inputCariWilayah"
+                                placeholder="Cari wilayah...">
+
+                            <button type="submit">
+                                CARI
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    {{-- =================================================
+                         9 WILAYAH KERJA
+                    ================================================== --}}
+
+                    <div class="peta-side-card wilayah-card">
+
+                        <div class="side-title">
+
+                            <span>
+                                📍
+                            </span>
+
+                            <h3>
+                                WILAYAH KERJA
+                            </h3>
+
+                        </div>
+
+
+                        <div class="wilayah-carousel">
+
+                            <button
+                                type="button"
+                                class="carousel-btn prev"
+                                id="wilayahPrev">
+                                ‹
+                            </button>
+
+
+                            <div class="wilayah-track-wrapper">
+
+                                <div
+                                    class="wilayah-track"
+                                    id="wilayahTrack">
+
+
+                                    {{-- =================================================
+                                         SET 1
+                                    ================================================== --}}
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kota Malang">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kota-Malang.png') }}"
+                                            alt="Kota Malang">
+
+                                        <span>
+                                            KOTA MALANG
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kota Batu">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kota_Batu.png') }}"
+                                            alt="Kota Batu">
+
+                                        <span>
+                                            KOTA BATU
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kabupaten Pasuruan">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kabupaten-Pasuruan.png') }}"
+                                            alt="Kabupaten Pasuruan">
+
+                                        <span>
+                                            KAB. PASURUAN
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kota Pasuruan">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kota-Pasuruan.png') }}"
+                                            alt="Kota Pasuruan">
+
+                                        <span>
+                                            KOTA PASURUAN
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kabupaten Blitar">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kabupaten-blitar.jpg') }}"
+                                            alt="Kabupaten Blitar">
+
+                                        <span>
+                                            KAB. BLITAR
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kota Blitar">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kota-Blitar.png') }}"
+                                            alt="Kota Blitar">
+
+                                        <span>
+                                            KOTA BLITAR
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kabupaten Sidoarjo">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kabupaten-Sidoarjo.png') }}"
+                                            alt="Kabupaten Sidoarjo">
+
+                                        <span>
+                                            KAB. SIDOARJO
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kota Surabaya">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kota-Surabaya.png') }}"
+                                            alt="Kota Surabaya">
+
+                                        <span>
+                                            KOTA SURABAYA
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="wilayah-photo"
+                                        data-wilayah="Kabupaten Malang">
+
+                                        <img
+                                            src="{{ asset('images/Wilayah/Kabupaten-Malang.png') }}"
+                                            alt="Kabupaten Malang">
+
+                                        <span>
+                                            KAB. MALANG
+                                        </span>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="carousel-btn next"
+                                id="wilayahNext">
+                                ›
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- =================================================
+                         AGENDA
+                    ================================================== --}}
+
+                    <div class="peta-side-card agenda-card">
+
+                        <div class="side-title">
+
+                            <span>
+                                📅
+                            </span>
+
+                            <h3>
+                                AGENDA
+                            </h3>
+
+                        </div>
+
+
+                        <div class="agenda-date">
+                            SEPTEMBER 2026
+                        </div>
+
+
+                        <div class="agenda-item">
+
+                            <span class="agenda-dot blue"></span>
+
+                            <div>
+
+                                <strong>
+                                    Monitoring Sarana Prasarana
+                                </strong>
+
+                                <small>
+                                    Kabupaten Malang
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="agenda-item">
+
+                            <span class="agenda-dot green"></span>
+
+                            <div>
+
+                                <strong>
+                                    Koordinasi Penanganan
+                                </strong>
+
+                                <small>
+                                    Kabupaten Pasuruan
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="agenda-item">
+
+                            <span class="agenda-dot orange"></span>
+
+                            <div>
+
+                                <strong>
+                                    Evaluasi Program
+                                </strong>
+
+                                <small>
+                                    Kota Malang
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
 
 </div>
+
+@endsection
+
+
+{{-- =========================================================
+     JAVASCRIPT
+========================================================= --}}
+
+@push('scripts')
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin="">
+</script>
+
+
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    const track = document.querySelector('.wilayah-track');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
 
-    if (!track || !prevBtn || !nextBtn) return;
+    /* =====================================================
+       DATA 9 WILAYAH KERJA
+    ====================================================== */
 
-    const scrollAmount = 150;
+    const wilayahData = [
 
-    nextBtn.addEventListener('click', function () {
-        track.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
+        {
+            id: 'kota-malang',
+            nama: 'Kota Malang',
+            lat: -7.9797,
+            lng: 112.6304
+        },
+
+        {
+            id: 'kota-batu',
+            nama: 'Kota Batu',
+            lat: -7.8705,
+            lng: 112.5260
+        },
+
+        {
+            id: 'kab-pasuruan',
+            nama: 'Kabupaten Pasuruan',
+            lat: -7.6469,
+            lng: 112.9060
+        },
+
+        {
+            id: 'kota-pasuruan',
+            nama: 'Kota Pasuruan',
+            lat: -7.6453,
+            lng: 112.9075
+        },
+
+        {
+            id: 'kab-blitar',
+            nama: 'Kabupaten Blitar',
+            lat: -8.0950,
+            lng: 112.1627
+        },
+
+        {
+            id: 'kota-blitar',
+            nama: 'Kota Blitar',
+            lat: -8.0983,
+            lng: 112.1688
+        },
+
+        {
+            id: 'kab-sidoarjo',
+            nama: 'Kabupaten Sidoarjo',
+            lat: -7.4478,
+            lng: 112.7183
+        },
+
+        {
+            id: 'kota-surabaya',
+            nama: 'Kota Surabaya',
+            lat: -7.2463,
+            lng: 112.7378
+        },
+
+        {
+            id: 'kab-malang',
+            nama: 'Kabupaten Malang',
+            lat: -8.1314,
+            lng: 112.5729
+        }
+
+    ];
+
+
+    /* =====================================================
+       MAP
+    ====================================================== */
+
+    const mapElement =
+        document.getElementById('leaflet-map');
+
+
+    if (mapElement && typeof L !== 'undefined') {
+
+
+        const map = L.map('leaflet-map', {
+
+            scrollWheelZoom: true,
+
+            zoomControl: true
+
         });
-    });
 
-    prevBtn.addEventListener('click', function () {
-        track.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
+
+        /* =================================================
+           OPENSTREETMAP
+        ================================================== */
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+
+                maxZoom: 19,
+
+                attribution:
+                    '&copy; OpenStreetMap contributors'
+
+            }
+        ).addTo(map);
+
+
+        /* =================================================
+           MARKER GROUP
+        ================================================== */
+
+        const markerGroup =
+            L.featureGroup().addTo(map);
+
+
+        wilayahData.forEach(function (wilayah) {
+
+
+            /*
+             * Marker menggunakan marker bawaan Leaflet.
+             * Bentuknya pin lokasi seperti aplikasi Maps.
+             */
+
+            const marker = L.marker(
+                [
+                    wilayah.lat,
+                    wilayah.lng
+                ]
+            );
+
+
+            marker
+                .bindPopup(`
+                    <div class="wilayah-popup">
+
+                        <div class="popup-icon">
+                            📍
+                        </div>
+
+                        <strong>
+                            ${wilayah.nama}
+                        </strong>
+
+                        <small>
+                            Wilayah Kerja Bakorwil III Malang
+                        </small>
+
+                    </div>
+                `);
+
+
+            marker
+                .bindTooltip(
+                    wilayah.nama,
+                    {
+                        direction: 'top',
+                        offset: [0, -8]
+                    }
+                );
+
+
+            marker
+                .addTo(markerGroup);
+
+
+            /*
+             * Simpan marker agar bisa
+             * dipanggil dari carousel/search.
+             */
+
+            wilayah.marker = marker;
+
         });
-    });
+
+
+        /* =================================================
+           TAMPILKAN SEMUA 9 WILAYAH
+        ================================================== */
+
+        map.fitBounds(
+            markerGroup.getBounds(),
+            {
+                padding: [35, 35]
+            }
+        );
+
+
+        /* =================================================
+           KLIK LOGO -> PIN DIPUSATKAN
+        ================================================== */
+
+        document
+            .querySelectorAll('.wilayah-photo')
+            .forEach(function (card) {
+
+
+                card.addEventListener(
+                    'click',
+                    function () {
+
+                        const nama =
+                            this.dataset.wilayah;
+
+
+                        const wilayah =
+                            wilayahData.find(
+                                function (item) {
+                                    return item.nama === nama;
+                                }
+                            );
+
+
+                        if (!wilayah) {
+                            return;
+                        }
+
+
+                        map.flyTo(
+                            [
+                                wilayah.lat,
+                                wilayah.lng
+                            ],
+                            12,
+                            {
+                                duration: 1
+                            }
+                        );
+
+
+                        wilayah.marker.openPopup();
+
+                    }
+                );
+
+            });
+
+
+        /* =================================================
+           INVALIDATE MAP
+        ================================================== */
+
+        setTimeout(
+            function () {
+                map.invalidateSize();
+            },
+            500
+        );
+
+
+        window.addEventListener(
+            'resize',
+            function () {
+                map.invalidateSize();
+            }
+        );
+
+
+        /* =================================================
+           SEARCH WILAYAH
+        ================================================== */
+
+        const searchForm =
+            document.getElementById(
+                'formCariWilayah'
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                'inputCariWilayah'
+            );
+
+
+        if (searchForm && searchInput) {
+
+
+            searchForm.addEventListener(
+                'submit',
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const keyword =
+                        searchInput.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    if (!keyword) {
+
+                        map.fitBounds(
+                            markerGroup.getBounds(),
+                            {
+                                padding: [35, 35]
+                            }
+                        );
+
+                        return;
+
+                    }
+
+
+                    const hasil =
+                        wilayahData.find(
+                            function (wilayah) {
+
+                                return wilayah.nama
+                                    .toLowerCase()
+                                    .includes(keyword);
+
+                            }
+                        );
+
+
+                    if (hasil) {
+
+
+                        map.flyTo(
+                            [
+                                hasil.lat,
+                                hasil.lng
+                            ],
+                            12,
+                            {
+                                duration: 1
+                            }
+                        );
+
+
+                        hasil.marker.openPopup();
+
+
+                    } else {
+
+                        alert(
+                            'Wilayah tidak ditemukan.'
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CAROUSEL 9 WILAYAH
+    ====================================================== */
+
+    const track =
+        document.getElementById(
+            'wilayahTrack'
+        );
+
+
+    const prev =
+        document.getElementById(
+            'wilayahPrev'
+        );
+
+
+    const next =
+        document.getElementById(
+            'wilayahNext'
+        );
+
+
+    if (track) {
+
+
+        /*
+         * Duplikasi 9 item.
+         * Digunakan untuk membuat gerakan
+         * looping tanpa berhenti.
+         */
+
+        const items =
+            Array.from(
+                track.children
+            );
+
+
+        items.forEach(
+            function (item) {
+
+                const clone =
+                    item.cloneNode(true);
+
+                clone.classList.add(
+                    'carousel-clone'
+                );
+
+                track.appendChild(clone);
+
+            }
+        );
+
+
+        let posisi = 0;
+
+
+        const step = 116;
+
+
+        let timer;
+
+
+        function bergerakOtomatis() {
+
+
+            posisi += step;
+
+
+            if (
+                posisi >=
+                track.scrollWidth / 2
+            ) {
+
+                posisi = 0;
+
+            }
+
+
+            track.scrollTo({
+
+                left: posisi,
+
+                behavior: 'smooth'
+
+            });
+
+        }
+
+
+        function mulaiCarousel() {
+
+            timer =
+                setInterval(
+                    bergerakOtomatis,
+                    2200
+                );
+
+        }
+
+
+        function berhentiCarousel() {
+
+            clearInterval(timer);
+
+        }
+
+
+        mulaiCarousel();
+
+
+        /*
+         * Berhenti ketika mouse diarahkan
+         */
+
+        track.addEventListener(
+            'mouseenter',
+            berhentiCarousel
+        );
+
+
+        track.addEventListener(
+            'mouseleave',
+            mulaiCarousel
+        );
+
+
+        /*
+         * Tombol kiri
+         */
+
+        if (prev) {
+
+            prev.addEventListener(
+                'click',
+                function () {
+
+                    posisi -= step;
+
+
+                    if (posisi < 0) {
+
+                        posisi =
+                            track.scrollWidth / 2;
+
+                    }
+
+
+                    track.scrollTo({
+
+                        left: posisi,
+
+                        behavior: 'smooth'
+
+                    });
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Tombol kanan
+         */
+
+        if (next) {
+
+            next.addEventListener(
+                'click',
+                function () {
+
+                    posisi += step;
+
+
+                    if (
+                        posisi >=
+                        track.scrollWidth / 2
+                    ) {
+
+                        posisi = 0;
+
+                    }
+
+
+                    track.scrollTo({
+
+                        left: posisi,
+
+                        behavior: 'smooth'
+
+                    });
+
+                }
+            );
+
+        }
+
+    }
 
 });
+
 </script>
-@endsection
+
+@endpush
