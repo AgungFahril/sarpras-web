@@ -21,220 +21,7 @@
 
 <div class="sarpras-dashboard">
 
-    {{-- =====================================================
-         SIDEBAR
-    ====================================================== --}}
-
-    <aside class="sidebar">
-
-        <div class="sidebar-logo">
-
-            <div class="logo-circle">
-                <img
-                    src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}"
-                    alt="Logo Bakorwil III">
-            </div>
-
-            <div class="sidebar-brand">
-                <strong>BAKORWIL III</strong>
-                <span>MALANG</span>
-            </div>
-
-        </div>
-
-
-        <nav class="sidebar-menu">
-
-            <a href="{{ url('/') }}" class="sidebar-link">
-
-                <span class="menu-icon">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                </span>
-
-                <span class="menu-text">
-                    Dashboard
-                </span>
-
-            </a>
-
-
-            <a href="#" class="sidebar-link">
-
-                <span class="menu-icon">
-                    <i class="bi bi-building"></i>
-                </span>
-
-                <span class="menu-text">
-                    Tentang Sarpras
-                </span>
-
-            </a>
-
-
-            <div class="sidebar-dropdown" id="sarprasDropdown">
-
-                <button
-                    type="button"
-                    class="sidebar-link sidebar-dropdown-toggle">
-
-                    <span class="menu-icon">
-                        <i class="bi bi-signpost-split-fill"></i>
-                    </span>
-
-                    <span class="menu-text">
-                        Sarana & Prasarana
-                    </span>
-
-                    <span class="dropdown-arrow">
-                        <i class="bi bi-chevron-right"></i>
-                    </span>
-
-                </button>
-
-
-                <div
-                    class="sidebar-submenu"
-                    id="sarprasSubmenu"
-                    style="max-height:0; overflow:hidden;">
-
-                    <a href="#">
-                        <span>
-                            <i class="bi bi-signpost-2"></i>
-                        </span>
-                        Jalan & Jembatan
-                    </a>
-
-                    <a href="#">
-                        <span>
-                            <i class="bi bi-tree"></i>
-                        </span>
-                        Lingkungan Hidup
-                    </a>
-
-                    <a href="#">
-                        <span>
-                            <i class="bi bi-flower2"></i>
-                        </span>
-                        Kehutanan
-                    </a>
-
-                    <a href="#">
-                        <span>
-                            <i class="bi bi-lightning-charge"></i>
-                        </span>
-                        ESDM
-                    </a>
-
-                    <a href="#">
-                        <span>
-                            <i class="bi bi-droplet-fill"></i>
-                        </span>
-                        Sumber Daya Air
-                    </a>
-
-                    <a href="#">
-                        <span>
-                            <i class="bi bi-bus-front-fill"></i>
-                        </span>
-                        Transportasi
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <a href="#" class="sidebar-link">
-
-                <span class="menu-icon">
-                    <i class="bi bi-clipboard-check-fill"></i>
-                </span>
-
-                <span class="menu-text">
-                    Program & Kegiatan
-                </span>
-
-            </a>
-
-
-            <a
-                href="{{ route('peta.wilayah') }}"
-                class="sidebar-link active">
-
-                <span class="menu-icon">
-                    <i class="bi bi-geo-alt-fill"></i>
-                </span>
-
-                <span class="menu-text">
-                    Wilayah Kerja
-                </span>
-
-            </a>
-
-
-            <a href="#" class="sidebar-link">
-
-                <span class="menu-icon">
-                    <i class="bi bi-bar-chart-line-fill"></i>
-                </span>
-
-                <span class="menu-text">
-                    Infografis
-                </span>
-
-            </a>
-
-
-            <a href="#" class="sidebar-link">
-
-                <span class="menu-icon">
-                    <i class="bi bi-camera-fill"></i>
-                </span>
-
-                <span class="menu-text">
-                    Dokumentasi
-                </span>
-
-            </a>
-
-
-            <a href="#" class="sidebar-link">
-
-                <span class="menu-icon">
-                    <i class="bi bi-people-fill"></i>
-                </span>
-
-                <span class="menu-text">
-                    Tim Sarpras
-                </span>
-
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-            <div class="sidebar-status">
-
-                <span class="status-dot"></span>
-
-                <div>
-
-                    <strong>Sarpras</strong>
-
-                    <small>
-                        Bakorwil III Malang
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </aside>
-
+    @include('partials.sidebar')
 
     {{-- =====================================================
          KONTEN UTAMA
@@ -757,11 +544,6 @@ document.addEventListener('DOMContentLoaded', function () {
         wilayahData.forEach(function (wilayah) {
 
 
-            /*
-             * Marker menggunakan marker bawaan Leaflet.
-             * Bentuknya pin lokasi seperti aplikasi Maps.
-             */
-
             const marker = L.marker(
                 [
                     wilayah.lat,
@@ -803,11 +585,6 @@ document.addEventListener('DOMContentLoaded', function () {
             marker
                 .addTo(markerGroup);
 
-
-            /*
-             * Simpan marker agar bisa
-             * dipanggil dari carousel/search.
-             */
 
             wilayah.marker = marker;
 
@@ -1013,12 +790,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (track) {
 
 
-        /*
-         * Duplikasi 9 item.
-         * Digunakan untuk membuat gerakan
-         * looping tanpa berhenti.
-         */
-
         const items =
             Array.from(
                 track.children
@@ -1098,10 +869,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mulaiCarousel();
 
 
-        /*
-         * Berhenti ketika mouse diarahkan
-         */
-
         track.addEventListener(
             'mouseenter',
             berhentiCarousel
@@ -1113,10 +880,6 @@ document.addEventListener('DOMContentLoaded', function () {
             mulaiCarousel
         );
 
-
-        /*
-         * Tombol kiri
-         */
 
         if (prev) {
 
@@ -1148,10 +911,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-
-        /*
-         * Tombol kanan
-         */
 
         if (next) {
 
