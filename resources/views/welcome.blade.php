@@ -16,9 +16,7 @@
         <nav class="navbar">
 
             <div class="brand">
-                <div class="logo-circle">
-                    <img src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}" alt="Logo Bakorwil III">
-                </div>
+                <div class="brand-mark"><i class="bi bi-signpost-split-fill"></i></div>
                 <div class="brand-info">
                     <strong>BAKORWIL III</strong>
                     <span>SARPRAS &middot; MALANG</span>
@@ -56,73 +54,83 @@
 
 
 <!-- =========================
-     HERO (gaya "dashboard-header")
+     HERO
 ========================== -->
 <section class="hero" id="beranda">
-    <div class="container">
+    <div class="hero-background"></div>
+    <div class="hero-pattern"></div>
 
-        <div class="hero-banner">
+    <div class="container hero-container">
 
-            <div class="hero-content">
+        <div class="hero-content">
 
-                <div class="eyebrow">
-                    <span class="eyebrow-line"></span>
-                    SUB BIDANG SARANA DAN PRASARANA I
-                </div>
-
-                <h1>Membangun <span>Konektivitas</span> Wilayah Jawa Timur</h1>
-
-                <p>
-                    Mengoordinasikan, memfasilitasi, memantau, dan mengevaluasi
-                    pembangunan sarana prasarana di 7 Kabupaten/Kota wilayah kerja
-                    Bakorwil III Malang.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="{{ url('/dashboard') }}" class="button button-primary">
-                        <i class="bi bi-speedometer2"></i> Lihat Dashboard Monitoring
-                    </a>
-                    <a href="#tentang" class="button button-outline">
-                        Pelajari Lebih Lanjut
-                    </a>
-                </div>
-
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                SUB BIDANG SARANA DAN PRASARANA I
             </div>
 
-            <div class="hero-visual">
-                <img src="{{ asset('images/pemandangan.png') }}" alt="Ilustrasi Malang">
+            <h1>Membangun <span>Konektivitas</span> Wilayah Jawa Timur</h1>
+
+            <p>
+                Mengoordinasikan, memfasilitasi, memantau, dan mengevaluasi
+                pembangunan sarana prasarana di 7 Kabupaten/Kota wilayah kerja
+                Bakorwil III Malang — mulai dari jalan & jembatan, lingkungan
+                hidup, kehutanan, ESDM, sumber daya air, hingga transportasi.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ url('/dashboard') }}" class="button button-primary">
+                    <i class="bi bi-speedometer2"></i> Lihat Dashboard Monitoring
+                </a>
+                <a href="#tentang" class="button button-outline">
+                    Pelajari Lebih Lanjut
+                </a>
+            </div>
+
+            {{-- TODO: hubungkan ke tabel Statistik saat menu Statistik dibuat --}}
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>128</strong>
+                    <span>Program / Kegiatan Dipantau</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>7</strong>
+                    <span>Kabupaten / Kota Wilayah Kerja</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>68%</strong>
+                    <span>Rata-rata Progres Pelaksanaan</span>
+                </div>
             </div>
 
         </div>
 
-        <!-- Mini-stat, gayanya identik dengan .stat-card di dashboard -->
-        <div class="hero-stats">
+        <div class="hero-visual">
 
-            <div class="hero-stat">
-                <div class="hero-stat-icon"><i class="bi bi-clipboard-check-fill"></i></div>
-                <div>
-                    <span>PROGRAM / KEGIATAN</span>
-                    <strong>128</strong>
-                    <small>Kegiatan Dipantau</small>
+            <div class="hero-image">
+                <div class="image-overlay"></div>
+
+                <div class="hero-image-icon">
+                    <i class="bi bi-geo-alt-fill"></i>
                 </div>
-            </div>
 
-            <div class="hero-stat">
-                <div class="hero-stat-icon"><i class="bi bi-geo-alt-fill"></i></div>
-                <div>
+                <div class="hero-image-content">
                     <span>WILAYAH KERJA</span>
-                    <strong>7</strong>
-                    <small>Kabupaten / Kota</small>
+                    <strong>7 Kabupaten<br>& Kota</strong>
                 </div>
             </div>
 
-            <div class="hero-stat">
-                <div class="hero-stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <div class="hero-card">
+                <div class="hero-card-icon"><i class="bi bi-clipboard-check-fill"></i></div>
                 <div>
-                    <span>PROGRES PELAKSANAAN</span>
-                    <strong>68%</strong>
-                    <small>Rata-rata Progres</small>
+                    <strong>128 Program</strong>
+                    <span>Sedang dipantau</span>
                 </div>
+            </div>
+
+            <div class="hero-number">
+                <span>PROGRES</span>
+                <strong>68%</strong>
             </div>
 
         </div>
@@ -133,6 +141,7 @@
 
 <!-- =========================
      INTRO
+     (sudah tersambung ke database: profil_singkat)
 ========================== -->
 <section class="intro-section">
     <div class="container intro-grid">
@@ -146,11 +155,7 @@
         </div>
 
         <div class="intro-text">
-            Bakorwil III Malang, khususnya Sub Bidang Sarana dan Prasarana I,
-            berperan sebagai penghubung antara Pemerintah Provinsi Jawa Timur
-            dengan OPD dan instansi terkait di wilayah kerja, guna memastikan
-            pembangunan sarana prasarana berjalan tepat sasaran, efektif, dan
-            berkelanjutan bagi masyarakat.
+            {{ $profil->profil_singkat ?? 'Bakorwil III Malang, khususnya Sub Bidang Sarana dan Prasarana I, berperan sebagai penghubung antara Pemerintah Provinsi Jawa Timur dengan OPD dan instansi terkait di wilayah kerja.' }}
         </div>
 
     </div>
@@ -159,6 +164,7 @@
 
 <!-- =========================
      TENTANG / ABOUT
+     (feature-list sudah tersambung ke database: fungsi_utama)
 ========================== -->
 <section class="about-section" id="tentang">
     <div class="container about-grid">
@@ -171,7 +177,6 @@
                 </div>
             </div>
 
-            {{-- TODO: ganti dengan data yang sesuai --}}
             <div class="about-experience">
                 <strong>7</strong>
                 <span>KAB/KOTA<br>TERLAYANI</span>
@@ -190,37 +195,17 @@
 
             <div class="feature-list">
 
-                <div class="feature">
-                    <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
-                    <div>
-                        <strong>Koordinasi</strong>
-                        <span>Perencanaan & penyelesaian permasalahan dengan OPD terkait.</span>
+                @forelse ($fungsiUtama as $fungsi)
+                    <div class="feature">
+                        <div class="feature-icon" style="font-size: 18px;">{{ $fungsi->icon }}</div>
+                        <div>
+                            <strong>{{ ucfirst(strtolower($fungsi->judul)) }}</strong>
+                            <span>{{ \Illuminate\Support\Str::limit($fungsi->deskripsi, 75) }}</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon"><i class="bi bi-bar-chart-fill"></i></div>
-                    <div>
-                        <strong>Fasilitasi</strong>
-                        <span>Mendukung program agar berjalan efektif dan tepat sasaran.</span>
-                    </div>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon"><i class="bi bi-binoculars-fill"></i></div>
-                    <div>
-                        <strong>Pemantauan</strong>
-                        <span>Monitoring lapangan terhadap progres fisik dan keuangan.</span>
-                    </div>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
-                    <div>
-                        <strong>Evaluasi</strong>
-                        <span>Dasar rekomendasi perbaikan dan pengambilan keputusan.</span>
-                    </div>
-                </div>
+                @empty
+                    <p style="font-size: 12px; color: #999;">Belum ada data fungsi utama.</p>
+                @endforelse
 
             </div>
         </div>
@@ -243,7 +228,7 @@
             <p>Tim yang berdedikasi dalam mengawal pembangunan sarana prasarana di wilayah kerja.</p>
         </div>
 
-        {{-- TODO: ganti foto & nama berikut dengan data tim yang sebenarnya --}}
+        {{-- TODO: hubungkan ke tabel Tim saat menu Tim Sarpras dibuat --}}
         <div class="team-grid">
 
             <div class="team-card">
@@ -291,6 +276,7 @@
 <!-- =========================
      INFOGRAFIS
 ========================== -->
+
 <section class="infographic-section" id="infografis">
     <div class="container">
 
@@ -304,47 +290,107 @@
 
         <div class="infographic-grid">
 
-            <div class="infographic-card">
-                <div class="infographic-image">
-                    <i class="bi bi-signpost-2"></i>
-                    <span>JALAN & JEMBATAN</span>
-                </div>
-                <div class="infographic-info">
-                    <span>INFRASTRUKTUR</span>
-                    <h3>Progres Pembangunan Jalan & Jembatan</h3>
-                    <a href="#">Lihat Detail <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
+            @php
+                $iconBidang = [
+                    'Jalan & Jembatan'   => 'bi-signpost-2',
+                    'Lingkungan Hidup'   => 'bi-tree-fill',
+                    'Kehutanan'          => 'bi-tree',
+                    'ESDM'               => 'bi-lightning-charge-fill',
+                    'Sumber Daya Air'    => 'bi-droplet-fill',
+                    'Transportasi'       => 'bi-bus-front-fill',
+                    'Prasarana Lainnya'  => 'bi-building',
+                ];
+            @endphp
 
-            <div class="infographic-card">
-                <div class="infographic-image">
-                    <i class="bi bi-droplet-fill"></i>
-                    <span>SUMBER DAYA AIR</span>
+            @forelse ($programByBidang as $bidang)
+                <div class="infographic-card">
+                    <div class="infographic-image">
+                        <i class="bi {{ $iconBidang[$bidang->bidang] ?? 'bi-building' }}"></i>
+                        <span>{{ strtoupper($bidang->bidang) }}</span>
+                    </div>
+                    <div class="infographic-info">
+                        <span>{{ $bidang->total }} PROGRAM &middot; RATA-RATA {{ $bidang->rata_progres }}%</span>
+                        <h3>Progres Pembangunan {{ $bidang->bidang }}</h3>
+                        <a href="#dokumentasi">Lihat Program <i class="bi bi-arrow-right"></i></a>
+                    </div>
                 </div>
-                <div class="infographic-info">
-                    <span>LINGKUNGAN</span>
-                    <h3>Pengelolaan Sumber Daya Air Wilayah</h3>
-                    <a href="#">Lihat Detail <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="infographic-card">
-                <div class="infographic-image">
-                    <i class="bi bi-bus-front-fill"></i>
-                    <span>TRANSPORTASI</span>
-                </div>
-                <div class="infographic-info">
-                    <span>MOBILITAS</span>
-                    <h3>Konektivitas Transportasi Antarwilayah</h3>
-                    <a href="#">Lihat Detail <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
+            @empty
+                <p style="color:#eee; font-size:12px;">Belum ada data program & kegiatan.</p>
+            @endforelse
 
         </div>
 
     </div>
 </section>
 
+<!-- =========================
+     DAFTAR PROGRAM & KEGIATAN
+     (tersambung langsung ke tabel program_kegiatan / CRUD admin)
+========================== -->
+<section class="documentation-section" id="program">
+    <div class="container">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">PROGRAM & KEGIATAN</span>
+                <h2>Program Terbaru yang Dipantau</h2>
+            </div>
+            <a href="{{ url('/dashboard') }}" class="text-link dark-button">
+                Lihat Semua <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse: collapse; font-size: 12px;">
+                <thead>
+                    <tr style="text-align:left;">
+                        <th style="padding:10px 8px; border-bottom:2px solid rgba(255,255,255,.15);">Nama Program</th>
+                        <th style="padding:10px 8px; border-bottom:2px solid rgba(255,255,255,.15);">Bidang</th>
+                        <th style="padding:10px 8px; border-bottom:2px solid rgba(255,255,255,.15);">Wilayah</th>
+                        <th style="padding:10px 8px; border-bottom:2px solid rgba(255,255,255,.15);">Status</th>
+                        <th style="padding:10px 8px; border-bottom:2px solid rgba(255,255,255,.15);">Progres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($programTerbaru as $program)
+                        <tr style="border-bottom:1px solid rgba(255,255,255,.08);">
+                            <td style="padding:10px 8px; font-weight:600;">{{ $program->nama_program }}</td>
+                            <td style="padding:10px 8px;">{{ $program->bidang }}</td>
+                            <td style="padding:10px 8px;">{{ $program->wilayah }}</td>
+                            <td style="padding:10px 8px;">
+                                @php
+                                    $badge = match($program->status) {
+                                        'Selesai'  => 'background:#e8f4ee; color:#116b42',
+                                        'Berjalan' => 'background:#e1effb; color:#2678bd',
+                                        default    => 'background:#fff2e6; color:#dc8615',
+                                    };
+                                @endphp
+                                <span style="padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; {{ $badge }}">
+                                    {{ $program->status }}
+                                </span>
+                            </td>
+                            <td style="padding:10px 8px; white-space:nowrap;">
+                                <div style="display:flex; align-items:center; gap:6px;">
+                                    <div style="width:70px; height:6px; border-radius:4px; background:rgba(255,255,255,.15); overflow:hidden;">
+                                        <div style="width:{{ $program->progres }}%; height:100%; background:#1e88e5;"></div>
+                                    </div>
+                                    <span>{{ $program->progres }}%</span>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" style="padding:20px; text-align:center; opacity:.7;">
+                                Belum ada program & kegiatan yang tercatat.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
 
 <!-- =========================
      DOKUMENTASI
@@ -362,7 +408,7 @@
             </a>
         </div>
 
-        {{-- TODO: ganti placeholder berikut dengan foto dokumentasi asli --}}
+        {{-- TODO: hubungkan ke tabel Dokumentasi saat menunya dibuat --}}
         <div class="documentation-grid">
 
             <div class="documentation-large">
@@ -418,9 +464,7 @@
             <div>
                 <div class="footer-brand">
                     <div class="brand">
-                        <div class="logo-circle">
-                            <img src="{{ asset('images/logo-provinsi-jawa-timur-baru.png') }}" alt="Logo Bakorwil III">
-                        </div>
+                        <div class="brand-mark"><i class="bi bi-signpost-split-fill"></i></div>
                         <div class="brand-info">
                             <strong>BAKORWIL III</strong>
                             <span>SARPRAS &middot; MALANG</span>
@@ -443,7 +487,6 @@
                 <a href="#dokumentasi">Dokumentasi</a>
             </div>
 
-            {{-- TODO: ganti dengan alamat, telepon, dan email resmi instansi --}}
             <div>
                 <h4>KONTAK</h4>
                 <p><i class="bi bi-geo-alt"></i> Jl. Contoh No. 1, Malang, Jawa Timur</p>
@@ -469,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const header = document.getElementById('siteHeader');
     window.addEventListener('scroll', function () {
-        header.classList.toggle('scrolled', window.scrollY > 20);
+        header.classList.toggle('scrolled', window.scrollY > 30);
     });
 
     const mobileToggle = document.getElementById('mobileToggle');
