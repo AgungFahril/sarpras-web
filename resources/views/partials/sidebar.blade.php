@@ -54,7 +54,7 @@
 
             </div>
 
-            <a href="#" class="sidebar-link">
+            <a href="{{ route('program-kegiatan') }}" class="sidebar-link {{ request()->routeIs('program-kegiatan') ? 'active' : '' }}">
                 <span class="menu-icon"><i class="bi bi-clipboard-check-fill"></i></span>
                 <span class="menu-text">Program & Kegiatan</span>
             </a>
@@ -105,3 +105,36 @@
     </div>
 
 </aside>
+
+
+@once
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdown  = document.getElementById('sarprasDropdown');
+    const submenu   = document.getElementById('sarprasSubmenu');
+    if (!dropdown || !submenu) return;
+
+    const toggleBtn = dropdown.querySelector('.sidebar-dropdown-toggle');
+    let closeTimer = null;
+
+    function openSubmenu() {
+        clearTimeout(closeTimer);
+        dropdown.classList.add('open');
+        submenu.style.maxHeight = submenu.scrollHeight + 'px';
+    }
+    function closeSubmenu() {
+        dropdown.classList.remove('open');
+        submenu.style.maxHeight = '0';
+    }
+
+    dropdown.addEventListener('mouseenter', openSubmenu);
+    dropdown.addEventListener('mouseleave', () => { closeTimer = setTimeout(closeSubmenu, 180); });
+    toggleBtn.addEventListener('click', e => {
+        e.preventDefault();
+        dropdown.classList.contains('open') ? closeSubmenu() : openSubmenu();
+    });
+});
+</script>
+@endpush
+@endonce

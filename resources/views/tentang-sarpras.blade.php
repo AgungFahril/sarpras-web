@@ -26,6 +26,20 @@
             </div>
         </header>
 
+        @if (session('success'))
+            <div style="padding: 10px 16px; margin-bottom: 14px; background: #e8f4ee; border: 1px solid #b7ddc9; border-radius: 10px; color: #116b42; font-size: 11px; font-weight: 600;">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- TOMBOL KELOLA -->
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+            <a href="{{ route('tentang-sarpras.kelola') }}"
+               style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; background: #1e88e5; color: #fff; font-size: 11.5px; font-weight: 700; text-decoration: none;">
+                <i class="bi bi-pencil-square"></i> Kelola Konten
+            </a>
+        </div>
+
         <!-- PROFIL SINGKAT -->
         <section class="scope-section">
             <div class="section-title">
@@ -34,13 +48,7 @@
             </div>
 
             <p style="font-size: 12px; line-height: 1.8; color: #444; margin: 0;">
-                Sub Bidang Sarana dan Prasarana I merupakan bagian dari Badan
-                Koordinasi Wilayah (Bakorwil) III Malang, Pemerintah Provinsi
-                Jawa Timur, yang bertugas mengoordinasikan, memfasilitasi,
-                memantau, dan mengevaluasi pelaksanaan pembangunan sarana
-                prasarana di 7 Kabupaten/Kota wilayah kerja: Kota Malang,
-                Kabupaten Malang, Kota Pasuruan, Kabupaten Pasuruan, Tuban,
-                Lamongan, Gresik, dan Bangkalan.
+                {{ $profil->profil_singkat ?? 'Belum ada profil. Klik "Kelola Konten" untuk menambahkan.' }}
             </p>
         </section>
 
@@ -53,45 +61,15 @@
 
             <div class="function-grid">
 
-                <div class="function-card blue-card">
-                    <div class="function-image">👨‍💼</div>
-                    <h3>KOORDINASI</h3>
-                    <p>
-                        Mengoordinasikan perencanaan, pelaksanaan, dan
-                        penyelesaian permasalahan sarana prasarana dengan
-                        OPD dan instansi terkait di wilayah kerja.
-                    </p>
-                </div>
-
-                <div class="function-card green-card">
-                    <div class="function-image">📊</div>
-                    <h3>FASILITASI</h3>
-                    <p>
-                        Memfasilitasi program/kegiatan pembangunan sarana
-                        prasarana agar berjalan efektif, tepat sasaran, dan
-                        sesuai kebutuhan wilayah.
-                    </p>
-                </div>
-
-                <div class="function-card orange-card">
-                    <div class="function-image">👷</div>
-                    <h3>PEMANTAUAN</h3>
-                    <p>
-                        Melakukan monitoring lapangan terhadap progres fisik,
-                        keuangan, dan kendala pelaksanaan pembangunan sarana
-                        prasarana.
-                    </p>
-                </div>
-
-                <div class="function-card purple-card">
-                    <div class="function-image">📈</div>
-                    <h3>EVALUASI</h3>
-                    <p>
-                        Mengevaluasi hasil pelaksanaan program/kegiatan
-                        sebagai dasar rekomendasi perbaikan dan pengambilan
-                        keputusan.
-                    </p>
-                </div>
+                @forelse ($fungsiUtama as $fungsi)
+                    <div class="function-card {{ $fungsi->warna }}-card">
+                        <div class="function-image">{{ $fungsi->icon }}</div>
+                        <h3>{{ $fungsi->judul }}</h3>
+                        <p>{{ $fungsi->deskripsi }}</p>
+                    </div>
+                @empty
+                    <p style="font-size: 11px; color: #888;">Belum ada data. Klik "Kelola Konten" untuk menambahkan.</p>
+                @endforelse
 
             </div>
         </section>
@@ -104,13 +82,14 @@
             </div>
 
             <div class="scope-grid">
-                <div class="scope-item"><div>🛣️</div><span>Jalan &<br>Jembatan</span></div>
-                <div class="scope-item"><div>🌿</div><span>Lingkungan<br>Hidup</span></div>
-                <div class="scope-item"><div>🌳</div><span>Kehutanan</span></div>
-                <div class="scope-item"><div>⚡</div><span>ESDM</span></div>
-                <div class="scope-item"><div>💧</div><span>Sumber Daya<br>Air</span></div>
-                <div class="scope-item"><div>🚌</div><span>Transportasi</span></div>
-                <div class="scope-item"><div>🏢</div><span>Prasarana<br>Lainnya</span></div>
+                @forelse ($ruangLingkup as $ruang)
+                    <div class="scope-item">
+                        <div>{{ $ruang->icon }}</div>
+                        <span>{!! $ruang->label !!}</span>
+                    </div>
+                @empty
+                    <p style="font-size: 11px; color: #888;">Belum ada data.</p>
+                @endforelse
             </div>
         </section>
 
@@ -120,10 +99,7 @@
                 🎯 <strong>TUJUAN</strong>
             </div>
             <p>
-                Mewujudkan koordinasi yang efektif, fasilitasi yang responsif,
-                pemantauan yang akurat, dan evaluasi yang objektif untuk
-                pembangunan sarana prasarana yang berkualitas dan
-                berkelanjutan di wilayah kerja Bakorwil III Malang.
+                {{ $profil->tujuan ?? 'Belum ada tujuan. Klik "Kelola Konten" untuk menambahkan.' }}
             </p>
         </section>
 
@@ -132,31 +108,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdown  = document.getElementById('sarprasDropdown');
-    const submenu   = document.getElementById('sarprasSubmenu');
-    const toggleBtn = dropdown.querySelector('.sidebar-dropdown-toggle');
-    let closeTimer = null;
-
-    function openSubmenu() {
-        clearTimeout(closeTimer);
-        dropdown.classList.add('open');
-        submenu.style.maxHeight = submenu.scrollHeight + 'px';
-    }
-    function closeSubmenu() {
-        dropdown.classList.remove('open');
-        submenu.style.maxHeight = '0';
-    }
-
-    dropdown.addEventListener('mouseenter', openSubmenu);
-    dropdown.addEventListener('mouseleave', () => { closeTimer = setTimeout(closeSubmenu, 180); });
-    toggleBtn.addEventListener('click', e => {
-        e.preventDefault();
-        dropdown.classList.contains('open') ? closeSubmenu() : openSubmenu();
-    });
-});
-</script>
-@endpush
