@@ -63,20 +63,20 @@
                                 <td style="padding:10px 8px;">{{ $program->wilayah }}</td>
                                 <td style="padding:10px 8px;">
                                     @php
-                                        $badgeColor = match($program->status) {
-                                            'Selesai' => '#e8f4ee; color:#116b42',
-                                            'Berjalan' => '#e1effb; color:#2678bd',
-                                            default => '#fff2e6; color:#dc8615',
-                                        };
-                                    @endphp
-                                    <span style="padding:3px 9px; border-radius:20px; font-size:9.5px; font-weight:700; background:{{ $badgeColor }};">
+    $badgeColor = match($program->status) {
+        'Selesai'  => ['background:#e8f4ee', 'color:#116b42'],
+        'Berjalan' => ['background:#e1effb', 'color:#2678bd'],
+        default    => ['background:#fff2e6', 'color:#dc8615'],
+    };
+@endphp
+<span @style(array_merge(['padding:3px 9px', 'border-radius:20px', 'font-size:9.5px', 'font-weight:700'], $badgeColor))>
                                         {{ $program->status }}
                                     </span>
                                 </td>
                                 <td style="padding:10px 8px; white-space:nowrap;">
                                     <div style="display:flex; align-items:center; gap:6px;">
                                         <div style="width:60px; height:6px; border-radius:4px; background:#edf1f4; overflow:hidden;">
-                                            <div style="width:{{ $program->progres }}%; height:100%; background:#1e88e5;"></div>
+                                            <div @style(['width:'.$program->progres.'%', 'height:100%', 'background:#1e88e5'])></div>
                                         </div>
                                         <span>{{ $program->progres }}%</span>
                                     </div>
@@ -113,7 +113,7 @@
                                             <label style="display:block; font-size:9px; font-weight:700; color:#173e68; margin-bottom:3px;">Bidang</label>
                                             <select name="bidang" required style="padding:7px 9px; border:1px solid #dbe6ee; border-radius:6px; font-size:11px;">
                                                 @foreach ($bidangList as $bidang)
-                                                    <option value="{{ $bidang }}" {{ $program->bidang === $bidang ? 'selected' : '' }}>{{ $bidang }}</option>
+                                                    <option value="{{ $bidang }}" @selected($program->bidang === $bidang)>{{ $bidang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -128,7 +128,7 @@
                                             <label style="display:block; font-size:9px; font-weight:700; color:#173e68; margin-bottom:3px;">Status</label>
                                             <select name="status" required style="padding:7px 9px; border:1px solid #dbe6ee; border-radius:6px; font-size:11px;">
                                                 @foreach ($statusList as $status)
-                                                    <option value="{{ $status }}" {{ $program->status === $status ? 'selected' : '' }}>{{ $status }}</option>
+                                                    <option value="{{ $status }}" @selected($program->status === $status)>{{ $status }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
