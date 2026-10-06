@@ -296,6 +296,65 @@ button { font-family: inherit; }
 .infographic-info a:hover { gap: 10px; }
 
 /* =====================================================
+   GALERI INFOGRAFIS (poster dari admin, rasio gambar bebas)
+===================================================== */
+
+.gallery-masonry { column-count: 3; column-gap: 16px; }
+
+.gallery-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    break-inside: avoid;
+    text-align: left;
+    background: white;
+    border-radius: 12px;
+    cursor: zoom-in;
+    transition: transform 0.25s ease;
+}
+.gallery-item:hover { transform: translateY(-4px); }
+.gallery-item img { display: block; width: 100%; height: auto; }
+
+.gallery-caption { padding: 16px 18px 18px; }
+.gallery-caption span { font-size: 8px; font-weight: 800; letter-spacing: 0.8px; color: var(--accent); }
+.gallery-caption h3 { margin-top: 6px; font-size: 14.5px; font-weight: 800; line-height: 1.3; color: var(--navy); }
+.gallery-caption p { margin-top: 8px; font-size: 10.5px; line-height: 1.6; color: var(--muted); }
+
+/* --- Lightbox (tampilan besar saat poster diklik) --- */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(6, 37, 68, 0.92);
+    cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 92vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+.lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.25); }
+
+/* =====================================================
    DOCUMENTATION
 ===================================================== */
 
@@ -366,6 +425,7 @@ button { font-family: inherit; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .about-visual { max-width: 500px; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-masonry { column-count: 2; }
 }
 
 @media (max-width: 700px) {
@@ -380,6 +440,7 @@ button { font-family: inherit; }
     .feature-list { grid-template-columns: 1fr; }
     .team-grid { grid-template-columns: 1fr 1fr; }
     .infographic-grid { grid-template-columns: 1fr; }
+    .gallery-masonry { column-count: 1; }
     .section-heading { align-items: start; flex-direction: column; }
     .documentation-grid { grid-template-columns: 1fr 1fr; }
     .documentation-large { grid-column: 1 / -1; height: 240px; }

@@ -64,10 +64,10 @@
                 <span class="menu-text">Wilayah Kerja</span>
             </a>
 
-            <a href="#" class="sidebar-link">
-                <span class="menu-icon"><i class="bi bi-bar-chart-line-fill"></i></span>
-                <span class="menu-text">Infografis</span>
-            </a>
+            <a href="{{ route('infografis') }}" class="sidebar-link {{ request()->routeIs('infografis*') ? 'active' : '' }}">
+    <span class="menu-icon"><i class="bi bi-bar-chart-line-fill"></i></span>
+    <span class="menu-text">Infografis</span>
+</a>
 
             <a href="#" class="sidebar-link">
                 <span class="menu-icon"><i class="bi bi-camera-fill"></i></span>
