@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TentangSarprasController;
 use App\Http\Controllers\ProgramKegiatanController;
+use App\Http\Controllers\InfografisController;  
 use App\Models\ProfilSarpras;
 use App\Models\FungsiUtama;
 use App\Models\ProgramKegiatan;
+use App\Models\Infografis;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +30,10 @@ Route::get('/', function () {
 
     $programTerbaru = ProgramKegiatan::orderByDesc('updated_at')->take(6)->get();
 
+    $infografis = Infografis::where('is_published', true)->orderBy('urutan')->get();
+
     return view('welcome', compact(
-        'profil', 'fungsiUtama', 'totalProgram', 'rataProgres', 'programByBidang', 'programTerbaru'
+        'profil', 'fungsiUtama', 'totalProgram', 'rataProgres', 'programByBidang', 'programTerbaru', 'infografis'
     ));
 })->name('home');
 
@@ -107,5 +111,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/peta-wilayah', function () {
         return view('peta-wilayah');
     })->name('peta.wilayah');
+
+    Route::get('/infografis', [InfografisController::class, 'index'])->name('infografis');
+Route::post('/infografis', [InfografisController::class, 'store'])->name('infografis.store');
+Route::put('/infografis/{infografis}', [InfografisController::class, 'update'])->name('infografis.update');
+Route::delete('/infografis/{infografis}', [InfografisController::class, 'destroy'])->name('infografis.destroy');
 
 });

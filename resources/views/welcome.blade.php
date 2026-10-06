@@ -320,6 +320,41 @@
 
         </div>
 
+        {{-- ===== Galeri infografis dari admin ===== --}}
+        @if ($infografis->isNotEmpty())
+            <div class="section-heading light" style="margin-top:48px;">
+                <div>
+                    <span class="section-label">GALERI</span>
+                    <h2>Infografis Terbaru</h2>
+                </div>
+            </div>
+
+            <div class="gallery-masonry">
+                @foreach ($infografis as $item)
+                    <button type="button" class="gallery-item"
+                        data-src="{{ asset('storage/'.$item->gambar) }}"
+                        data-title="{{ $item->judul }}">
+                        <img src="{{ asset('storage/'.$item->gambar) }}" alt="{{ $item->judul }}" loading="lazy">
+                        <div class="gallery-caption">
+                            <span>{{ strtoupper($item->kategori) }}{{ $item->tahun ? ' · '.$item->tahun : '' }}</span>
+                            <h3>{{ $item->judul }}</h3>
+                            @if ($item->deskripsi)
+                                <p>{{ \Illuminate\Support\Str::limit($item->deskripsi, 90) }}</p>
+                            @endif
+                        </div>
+                    </button>
+                @endforeach
+            </div>
+
+            {{-- Lightbox (satu saja untuk semua gambar) --}}
+            <div class="lightbox" id="lightbox">
+                <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Tutup">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                <img src="" alt="" id="lightboxImg">
+            </div>
+        @endif
+
     </div>
 </section>
 
@@ -359,20 +394,20 @@
                             <td style="padding:10px 8px;">{{ $program->wilayah }}</td>
                             <td style="padding:10px 8px;">
                                 @php
-                                    $badge = match($program->status) {
-                                        'Selesai'  => 'background:#e8f4ee; color:#116b42',
-                                        'Berjalan' => 'background:#e1effb; color:#2678bd',
-                                        default    => 'background:#fff2e6; color:#dc8615',
-                                    };
-                                @endphp
-                                <span style="padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; {{ $badge }}">
+    $badge = match($program->status) {
+        'Selesai'  => ['background:#e8f4ee', 'color:#116b42'],
+        'Berjalan' => ['background:#e1effb', 'color:#2678bd'],
+        default    => ['background:#fff2e6', 'color:#dc8615'],
+    };
+@endphp
+<span @style(array_merge(['padding:3px 10px', 'border-radius:20px', 'font-size:10px', 'font-weight:700'], $badge))>
                                     {{ $program->status }}
                                 </span>
                             </td>
                             <td style="padding:10px 8px; white-space:nowrap;">
                                 <div style="display:flex; align-items:center; gap:6px;">
                                     <div style="width:70px; height:6px; border-radius:4px; background:rgba(255,255,255,.15); overflow:hidden;">
-                                        <div style="width:{{ $program->progres }}%; height:100%; background:#1e88e5;"></div>
+                                       <div @style(['width:'.$program->progres.'%', 'height:100%', 'background:#1e88e5'])></div>
                                     </div>
                                     <span>{{ $program->progres }}%</span>
                                 </div>
@@ -510,11 +545,13 @@
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Navbar: beri bayangan saat discroll
     const header = document.getElementById('siteHeader');
     window.addEventListener('scroll', function () {
         header.classList.toggle('scrolled', window.scrollY > 30);
     });
 
+    // Menu mobile
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileNav = document.getElementById('mobileNavigation');
 
@@ -527,6 +564,33 @@ document.addEventListener('DOMContentLoaded', function () {
             mobileNav.classList.remove('open');
         });
     });
+
+    // Lightbox galeri infografis
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        const lbImg = document.getElementById('lightboxImg');
+
+        document.querySelectorAll('.gallery-item').forEach(function (item) {
+            item.addEventListener('click', function () {
+                lbImg.src = item.dataset.src;
+                lbImg.alt = item.dataset.title;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function tutupLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function (e) {
+            if (e.target !== lbImg) tutupLightbox();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') tutupLightbox();
+        });
+    }
 
 });
 </script>
